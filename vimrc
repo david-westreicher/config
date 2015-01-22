@@ -11,6 +11,7 @@ set bs=2
 " make copy&paste work
 set pastetoggle=<F9>
 set clipboard=unnamedplus
+vmap p "_dP
 
 " mouse
 set mouse=a
@@ -43,11 +44,17 @@ set number
 set tw=0
 highlight LineNr ctermfg=grey
 
-" use tabs 
+" use spaces 
 set autoindent
-set noexpandtab
+" set noexpandtab
+set expandtab
 set tabstop=4
 set shiftwidth=4
+set softtabstop=4
+set smartindent
+set shiftround
+set copyindent
+set preserveindent
 
 " ############################
 " VUNDLE START
