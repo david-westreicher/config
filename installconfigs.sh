@@ -8,7 +8,8 @@ if hash git 2>/dev/null; then
         cat addtobashrc >> ~/.bashrc
         source ~/.bashrc
 
-        ln -s "$(pwd)/vimrc" ~/.vimrc
+        DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+        ln -s "$DIR/vimrc" ~/.vimrc
         vim +PluginInstall
     else
         echo "You need to install VIM!"
