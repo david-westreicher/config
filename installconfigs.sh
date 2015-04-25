@@ -1,10 +1,11 @@
 #!/bin/bash
 
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-cat addtobashrc >> ~/.bashrc
-source ~/.bashrc
 
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+
+cat $DIR/addtobashrc >> ~/.bashrc
+source ~/.bashrc
 
 if [ -f ~/.vimrc ];
 then
