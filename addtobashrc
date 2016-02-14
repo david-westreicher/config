@@ -1,5 +1,6 @@
 # This configs were added by https://github.com/david-westreicher/config/installconfigs.sh
 # use 256 colors, disable ctrl+s
+alias ll='ls -lah --color=auto'
 export TERM=xterm-256color
 bind -r '\C-s'
 stty -ixon -ixoff
