@@ -69,6 +69,7 @@ Plugin 'gmarik/Vundle.vim'
 
 " AIRLINE
 Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 set laststatus=2
 if !exists('g:airline_symbols')
 	let g:airline_symbols = {}
