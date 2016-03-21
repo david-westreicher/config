@@ -88,9 +88,15 @@ let g:airline_symbols.whitespace = 'Ξ'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='luna'
 
+"GIT
+Plugin 'airblade/vim-gitgutter'
+
 " MARKDOWN
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
+
+" Flake8
+Plugin 'nvie/vim-flake8'
 
 " ############################
 " VUNDLE END
