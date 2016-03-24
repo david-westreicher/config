@@ -154,3 +154,11 @@ bar {
 }
 
 hide_edge_borders both
+exec ~/Documents/scripts/taptoclick.sh
+
+#Multimedia Keys
+bindsym XF86AudioLowerVolume exec amixer -q set Master 5-
+bindsym XF86AudioRaiseVolume exec amixer -q set Master 5+
+bindsym XF86AudioMute exec $(amixer get Master | grep off > /dev/null && amixer -q set Master unmute) || amixer -q set Master mute
+bindsym XF86KbdBrightnessDown exec "python /home/david/Documents/scripts/changekbbrightness.py 1"
+bindsym XF86KbdBrightnessUp exec "python /home/david/Documents/scripts/changebrightness.py +50"
