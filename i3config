@@ -154,3 +154,10 @@ bar {
 }
 
 hide_edge_borders both
+
+# startup script
+#exec ~/Documents/beamer.sh
+bindsym XF86AudioLowerVolume exec amixer -q set Master 5- && amixer -q set PCM 5-
+bindsym XF86AudioRaiseVolume exec amixer -q set Master 5+ && amixer -q set PCM 5+
+exec ~/Documents/scripts/noscreensaver.sh
+exec compton
