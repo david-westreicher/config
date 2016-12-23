@@ -14,6 +14,7 @@ alias search='grep -rnwi . -e'
 alias largest='~/Documents/config/largest.sh'
 alias music='cmus'
 alias vps='ssh-add ~/.ssh/ramnode && ssh root@81.4.121.94'
+alias largest='du -a $1 | sort -n -r | head -n 10'
 
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
