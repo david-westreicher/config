@@ -161,3 +161,6 @@ bindsym XF86AudioLowerVolume exec amixer -q set Master 5- && amixer -q set PCM 5
 bindsym XF86AudioRaiseVolume exec amixer -q set Master 5+ && amixer -q set PCM 5+
 exec ~/Documents/scripts/noscreensaver.sh
 exec compton
+
+for_window [title="Mass-Spring Example"] floating enable
+for_window [title="2D Fluid Simulation"] floating enable
