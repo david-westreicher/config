@@ -14,3 +14,12 @@ alias search='grep -rnwi . -e'
 alias largest='~/Documents/config/largest.sh'
 alias music='cmus'
 alias vps='ssh-add ~/.ssh/ramnode && ssh root@81.4.121.94'
+
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    alias ll='ls -l -a -h --color=auto'
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
