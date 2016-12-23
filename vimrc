@@ -93,6 +93,12 @@ let g:airline_theme='luna'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 
+" ide
+Plugin 'scrooloose/nerdtree'
+
+" multiselect
+Plugin 'terryma/vim-multiple-cursors'
+
 " ############################
 " VUNDLE END
 " ###########################
