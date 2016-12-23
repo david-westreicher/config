@@ -43,6 +43,7 @@ syntax on
 set number
 set tw=0
 highlight LineNr ctermfg=grey
+highlight Search ctermfg=black
 
 " use spaces 
 set autoindent
@@ -89,9 +90,12 @@ let g:airline_symbols.whitespace = 'Ξ'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='luna'
 
-" MARKDOWN
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
+"GIT
+Plugin 'airblade/vim-gitgutter'
+
+" autopep8
+Plugin 'tell-k/vim-autopep8'
+let g:autopep8_ignore='E501'
 
 " ide
 Plugin 'scrooloose/nerdtree'
