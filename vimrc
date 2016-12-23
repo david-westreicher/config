@@ -36,8 +36,6 @@ inoremap <c-q> <Esc>:q<CR>
 vnoremap < <gv
 vnoremap > >gv
 
-" syntax
-syntax on
 
 " ide settings
 set number
@@ -56,6 +54,9 @@ set smartindent
 set shiftround
 set copyindent
 set preserveindent
+
+" File extensions
+au BufReadPost *.mc set syntax=c
 
 " ############################
 " VUNDLE START
@@ -93,6 +94,15 @@ let g:airline_theme='luna'
 "GIT
 Plugin 'airblade/vim-gitgutter'
 
+"CTRLP
+Plugin 'kien/ctrlp.vim'
+
+"Multiple Cursors
+Plugin 'terryma/vim-multiple-cursors'
+
+" signatures
+Plugin 'kshenoy/vim-signature'
+
 " autopep8
 Plugin 'tell-k/vim-autopep8'
 let g:autopep8_ignore='E501'
@@ -100,8 +110,15 @@ let g:autopep8_ignore='E501'
 " ide
 Plugin 'scrooloose/nerdtree'
 
-" multiselect
-Plugin 'terryma/vim-multiple-cursors'
+" Dockerfile
+Plugin 'ekalinin/Dockerfile.vim'
+
+" lint all
+Plugin 'scrooloose/syntastic'
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_check_on_open = 0
+autocmd VimEnter * SyntasticToggleMode " disable syntastic by default
+noremap <F6> :SyntasticCheck<CR>
 
 " ############################
 " VUNDLE END
@@ -109,4 +126,8 @@ Plugin 'terryma/vim-multiple-cursors'
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
-" filetype plugin on
+"
+
+" syntax
+syntax enable
+filetype plugin on
