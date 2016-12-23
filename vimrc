@@ -107,6 +107,9 @@ Plugin 'kshenoy/vim-signature'
 Plugin 'tell-k/vim-autopep8'
 let g:autopep8_ignore='E501'
 
+" ide
+Plugin 'scrooloose/nerdtree'
+
 " Dockerfile
 Plugin 'ekalinin/Dockerfile.vim'
 
