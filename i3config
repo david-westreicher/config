@@ -188,6 +188,6 @@ bindsym XF86AudioRaiseVolume exec "killall -s USR1 py3status && amixer -q set Ma
 bindsym XF86AudioMute exec "killall -s USR1 py3status && $(amixer get Master | grep off > /dev/null && amixer -q set Master unmute) || amixer -q set Master mute"
 
 # LAPTOP
-# exec ~/Documents/config/scripts/taptoclick.sh
-# bindsym XF86KbdBrightnessDown exec "python /home/david/Documents/config/scripts/changekbbrightness.py 1"
-# bindsym XF86KbdBrightnessUp exec "python /home/david/Documents/config/scripts/changebrightness.py +50"
+exec ~/Documents/config/scripts/taptoclick.sh
+bindsym XF86KbdBrightnessDown exec "python /home/david/Documents/config/scripts/changekbbrightness.py 1"
+bindsym XF86KbdBrightnessUp exec "python /home/david/Documents/config/scripts/changebrightness.py +50"
