@@ -3,7 +3,23 @@
 #
 # Should you change your keyboard layout some time, delete
 # this file and re-run i3-config-wizard(1).
-#
+set $black3 #002b36
+set $black2 #073642
+set $black1 #586e75
+set $black0 #657b83
+set $white0 #839496
+set $white1 #93a1a1
+set $white2 #eee8d5
+set $white3 #fdf6e3
+
+set $yellow #b58900
+set $orange #cb4b16
+set $red #dc322f
+set $magenta #d33682
+set $violet #6c71c4
+set $blue #268bd2
+set $cyan #2aa198
+set $green #859900
 
 # i3 config file (v4) #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
@@ -14,7 +30,7 @@ set $mod Mod4
 # is used in the bar {} block below.
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:DejaVu Sans Mono 8
+font pango: M+ 1m, FontAwesome, Ionicons, 10
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # The font above is very space-efficient, that is, it looks good, sharp and
@@ -26,7 +42,7 @@ font pango:DejaVu Sans Mono 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec lilyterm
+bindsym $mod+Return exec lilyterm -s
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -148,19 +164,34 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3status
-        position bottom
-        mode hide
+        # Using py3status
+        status_command py3status -c ~/.i3/i3status.conf
+        position top
+        mode dock
+        separator_symbol                "  "
+        font pango: M+ 1m, FontAwesome, Ionicons, 10
+        colors {
+                separator $black0
+                background $black3
+                statusline $white3
+                focused_workspace $green $green $white3
+                active_workspace $white3 $violet $white3
+                inactive_workspace $black3 $black3 $white3
+                urgent_workspace $magenta $magenta $white3
+        }
 }
+# class                 border  backgr. text    indicator child_border
+client.focused $green $green $white3 $green
+client.unfocused $black3 $black3 $white1 $black3
+client.focused_inactive $black1 $black1 $white2 $black1
+client.urgent $magenta $magenta $white2 $magenta
 
-hide_edge_borders both
+new_window pixel 2
+exec ~/Documents/scripts/taptoclick.sh
 
-# startup script
-#exec ~/Documents/beamer.sh
-bindsym XF86AudioLowerVolume exec amixer -q set Master 5- && amixer -q set PCM 5-
-bindsym XF86AudioRaiseVolume exec amixer -q set Master 5+ && amixer -q set PCM 5+
-exec ~/Documents/scripts/noscreensaver.sh
-exec compton
-
-for_window [title="Mass-Spring Example"] floating enable
-for_window [title="2D Fluid Simulation"] floating enable
+#Multimedia Keys
+bindsym XF86AudioLowerVolume exec "killall -s USR1 py3status && amixer -q set Master 5-"
+bindsym XF86AudioRaiseVolume exec "killall -s USR1 py3status && amixer -q set Master 5+"
+bindsym XF86AudioMute exec "killall -s USR1 py3status && $(amixer get Master | grep off > /dev/null && amixer -q set Master unmute) || amixer -q set Master mute"
+bindsym XF86KbdBrightnessDown exec "python /home/david/Documents/scripts/changekbbrightness.py 1"
+bindsym XF86KbdBrightnessUp exec "python /home/david/Documents/scripts/changebrightness.py +50"
