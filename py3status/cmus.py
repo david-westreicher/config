@@ -9,19 +9,22 @@ class Py3status:
             output = self.py3.command_output(['cmus-remote', '-Q'])
         except:
             return {
-                'full_text': '',
+                'full_text': '',
                 'cached_until': self.py3.time_in(5)
             }
         title = ''
         artist = ''
         status = ''
+        shuffle = ''
         for line in output.split('\n'):
+            if line.startswith('set shuffle true'):
+                shuffle = ' '
             if line.startswith('status paused'):
-                status = ''
+                status = ''
             if line.startswith('status playing'):
-                status = ''
+                status = ''
             if line.startswith('status stopped'):
-                status = ''
+                status = ''
             if line.startswith('file '):
                 title = ''.join(line.split('/')[-1].split('.')[:-1])
             if line.startswith('tag title '):
@@ -32,9 +35,9 @@ class Py3status:
                 _artist = ''.join(line.split('tag artist ')[1:])
                 if len(_artist)>0:
                     artist = _artist
-        out = status + '  ' + artist + ': ' + title
-        if status == '':
-            out = ''
+        out = status + '  ' + artist + ': ' + title + shuffle
+        if status == '':
+            out = ''
         return {
             'full_text': out,
             'cached_until': self.py3.time_in(1)

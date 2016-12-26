@@ -13,7 +13,7 @@ ln -sf ~/Documents/config/i3config ~/.i3/config
 ln -sf ~/Documents/config/i3status.conf ~/.i3/i3status.conf
 ln -sf ~/Documents/config/py3status ~/.i3/py3status
 
-sudo apt-get install python3-pip lm-sensors acpi fonts-font-awesome
-sudo pip3 install py3status i3-py pytz tzlocal
+sudo apt-get install python3-pip acpi fonts-font-awesome
+sudo pip3 install py3status i3ipc
 
 vim +PluginInstall +qall
