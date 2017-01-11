@@ -1,4 +1,4 @@
-sudo apt-get install lilyterm vim git i3-wm xinit curl x11-xserver-utils
+sudo apt-get install lilyterm vim git i3-wm xinit curl x11-xserver-utils feh
 mkdir -p ~/Documents
 mkdir -p ~/.config/lilyterm
 mkdir -p ~/.i3
