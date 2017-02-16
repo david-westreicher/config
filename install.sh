@@ -22,3 +22,7 @@ sudo apt-get install python3-pip fonts-font-awesome
 sudo pip3 install py3status i3ipc
 
 vim +PluginInstall +qall
+
+# update-alternatives --config editor -> nvim/vim
+# update-alternatives --config x-terminal-emulator -> lxterminal
+# update-alternatives --config x-www-browser -> chromium

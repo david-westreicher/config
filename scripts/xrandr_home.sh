@@ -1,1 +1,1 @@
-xrandr --output DisplayPort-3 --rotate left --right-of DVI-1
+xrandr --output DP-0 --rotate left --right-of DVI-D-0
