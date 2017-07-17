@@ -98,6 +98,7 @@ Plugin 'airblade/vim-gitgutter'
 
 "CTRLP
 Plugin 'kien/ctrlp.vim'
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
 "Multiple Cursors
 Plugin 'terryma/vim-multiple-cursors'
@@ -114,6 +115,15 @@ Plugin 'scrooloose/nerdtree'
 
 " Dockerfile
 Plugin 'ekalinin/Dockerfile.vim'
+
+" Ansible
+Plugin 'pearofducks/ansible-vim'
+
+" Search
+Plugin 'ddrscott/vim-side-search'
+
+" Flake 8
+Plugin 'nvie/vim-flake8'
 
 " lint all
 Plugin 'scrooloose/syntastic'
