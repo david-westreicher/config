@@ -1,4 +1,4 @@
-sudo apt-get install vim git i3-wm xinit curl x11-xserver-utils feh ranger lxterminal
+sudo apt-get install vim git i3 xinit curl x11-xserver-utils feh ranger lxterminal
 mkdir -p ~/Documents
 mkdir -p ~/.local/share/applications
 mkdir -p ~/.config/lxterminal
