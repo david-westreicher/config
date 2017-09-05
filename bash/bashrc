@@ -11,6 +11,7 @@ PS1='${debian_chroot:+($debian_chroot)}\
 \[\033[38;5;32m\]  \[\033[1;4m\]\w\[\033[00m\] \
 \n➤ '
 
+torrents () { python ~/Documents/config/scripts/torrent.py "$@";}
 alias multiscreen='python ~/Documents/config/scripts/multiscreen.py'
 alias haskell='ghci'
 alias wetter='curl wttr.in/Innsbruck'
@@ -19,6 +20,8 @@ alias music='cmus'
 alias vps='ssh david@vps -i ~/.ssh/vps'
 alias largest='du -a $1 | sort -n -r | head -n 10'
 alias showimg='feh --draw-filename --scale-down --recursive --quiet --thumb-height 120 --thumb-width 120'
+alias ..='cd ..'
+alias .='ll'
 
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
