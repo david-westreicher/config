@@ -125,9 +125,6 @@ Plugin 'ddrscott/vim-side-search'
 Plugin 'w0rp/ale'
 highlight ALEError ctermbg=blue
 
-" Flake 8
-Plugin 'nvie/vim-flake8'
-
 " Jedi
 Plugin 'davidhalter/jedi-vim'
 let g:jedi#use_tabs_not_buffers = 1
