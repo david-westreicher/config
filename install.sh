@@ -18,6 +18,7 @@ ln -sf ~/Documents/config/vim/vimrc ~/.vimrc
 ln -sf ~/Documents/config/i3/i3.conf ~/.i3/config
 ln -sf ~/Documents/config/i3/status.conf ~/.i3/i3status.conf
 ln -sf ~/Documents/config/i3/py3status ~/.i3/py3status
+ln -sf ~/Documents/config/python/flake8 ~/.config/flake8
 
 sudo apt-get install python3-pip fonts-font-awesome
 sudo pip3 install py3status i3ipc
