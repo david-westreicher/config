@@ -1,4 +1,4 @@
-sudo apt-get install vim git i3 xinit curl x11-xserver-utils feh ranger lxterminal
+sudo apt-get install vim git i3 rofi xinit curl x11-xserver-utils feh ranger lxterminal ack
 mkdir -p ~/Documents
 mkdir -p ~/.local/share/applications
 mkdir -p ~/.config/lxterminal
@@ -11,6 +11,7 @@ echo ". ~/Documents/config/bash/bashrc" >> ~/.bashrc
 
 ln -fs ~/Documents/config/xdg/mimeapps.list ~/.local/share/applications/mimeapps.list
 ln -fs ~/Documents/config/ls/dircolors.ansi-dark ~/.dircolors
+ln -fs ~/Documents/config/X/resources ~/.Xresources
 ln -sf ~/Documents/config/lxterminal/lxterminal.conf ~/.config/lxterminal/lxterminal.conf
 ln -sf ~/Documents/config/ranger/rc.conf ~/.config/ranger/rc.conf
 ln -sf ~/Documents/config/vim/vimrc ~/.vimrc
