@@ -21,7 +21,7 @@
   - name: Create config folders
     file:
       path: "{{ folders }}"
-      state: folder
+      state: directory
     vars:
       folders:
         - ~/Documents
@@ -30,7 +30,8 @@
   - name: Clone config files
     git:
       repo: 'https://github.com/david-westreicher/config'
-      dest: ~/Document/config
+      dest: ~/Documents/config
+
   - name: Create soft links
     file:
       src: "~/Documents/config/{{ item.path }}"
@@ -45,7 +46,7 @@
 
   - name: Add bashrc config
     lineinfile:
-      path: ~/.bashrc
+      dest: ~/.bashrc
       line: '. ~/Documents/config/bash/bashrc'
       insertafter: EOF
 
