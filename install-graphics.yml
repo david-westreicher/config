@@ -30,13 +30,13 @@
 
   - name: Create config folders
     file:
-      path: "{{ folders }}"
+      path: "{{ item }}"
       state: directory
-    vars:
-      folders:
-        - ~/.local/share/applications
-        - ~/.config/lxterminal
-        - ~/.i3
+      recurse: yes
+    with_items:
+      - ~/.local/share/applications
+      - ~/.config/lxterminal
+      - ~/.i3
 
   - name: Create soft links
     file:
