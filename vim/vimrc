@@ -42,6 +42,7 @@ set number
 set tw=0
 highlight LineNr ctermfg=grey
 highlight Search ctermfg=black
+set hlsearch
 
 " use spaces 
 set autoindent
