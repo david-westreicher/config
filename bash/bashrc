@@ -11,9 +11,10 @@ PS1='${debian_chroot:+($debian_chroot)}\
 \[\033[38;5;32m\]  \[\033[1;4m\]\w\[\033[00m\] \
 \n➤ '
 
-alias python='python3'
+alias python='python3.6'
 torrents () { python ~/Documents/config/scripts/torrent.py "$@";}
 alias multiscreen='python2 ~/Documents/config/scripts/multiscreen.py'
+alias forall='python3 ~/Documents/config/scripts/forall.py'
 alias haskell='ghci'
 alias wetter='curl wttr.in/Innsbruck'
 alias search='ack'
