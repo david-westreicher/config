@@ -20,12 +20,12 @@
 
   - name: Create config folders
     file:
-      path: "{{ folders }}"
+      path: "{{ item }}"
       state: directory
-    vars:
-      folders:
-        - ~/Documents
-        - ~/.config/ranger
+      recurse: yes
+    with_items:
+      - ~/Documents
+      - ~/.config/ranger
 
   - name: Clone config files
     git:
