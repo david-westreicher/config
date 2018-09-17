@@ -22,14 +22,11 @@
     become: yes
 
   - name: Install i3 dependencies
-    shell:
-      name: "pip3 install {{ packages }}"
-    vars:
-      packages:
-        - py3status
-        - i3ipc
+    command: "pip3 install {{ item }}"
+    with_items:
+    - py3status
+    - i3ipc
     become: yes
-
 
   - name: Create config folders
     file:
