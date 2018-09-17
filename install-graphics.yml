@@ -1,0 +1,56 @@
+---
+
+- name: run the playbook tasks on the localhost
+  hosts: 127.0.0.1
+  connection: local
+  tasks:
+
+  - name: Install a list of packages
+    apt:
+      name: "{{ packages }}"
+      update_cache: yes
+    vars:
+      packages:
+        - i3
+        - rofi
+        - xinit
+        - x11-xserver-utils
+        - feh
+        - lxterminal
+        - python3-pip
+        - fonts-font-awesome
+    become: yes
+
+  - name: Install i3 dependencies
+    shell:
+      name: "pip3 install {{ packages }}"
+    vars:
+      packages:
+        - py3status
+        - i3ipc
+    become: yes
+
+
+  - name: Create config folders
+    file:
+      path: "{{ folders }}"
+      state: directory
+    vars:
+      folders:
+        - ~/.local/share/applications
+        - ~/.config/lxterminal
+        - ~/.i3
+
+  - name: Create soft links
+    file:
+      src: "~/Documents/config/{{ item.path }}"
+      dest: "~/{{ item.dest }}"
+      state: link
+      force: yes
+    with_items:
+      - { path: 'xdg/mimeapps.list', dest: '.local/share/applications/mimeapps.list' }
+      - { path: 'X/resources', dest: '.Xresources' }
+      - { path: 'lxterminal/lxterminal.conf', dest: '.config/lxterminal/lxterminal.conf' }
+      - { path: 'i3/i3.conf', dest: '.i3/config' }
+      - { path: 'i3/status.conf', dest: '.i3/i3status.conf' }
+      - { path: 'i3/py3status', dest: '.i3/py3status' }
