@@ -16,6 +16,7 @@
         - curl
         - ranger
         - ack
+        - bash-completion
     become: yes
 
   - name: Create config folders
