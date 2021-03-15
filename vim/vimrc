@@ -50,6 +50,11 @@ set tw=0
 highlight LineNr ctermfg=grey
 highlight Search ctermfg=black
 set hlsearch
+execute "set <M-l>=\eL"
+execute "set <M-o>=\eO"
+noremap <M-l> :ALEFix<CR>
+noremap <M-o> :ALEImport<CR>
+nnoremap <silent> gd :ALEGoToDefinition -split<CR>
 
 " use spaces 
 set autoindent
@@ -105,7 +110,7 @@ Plugin 'airblade/vim-gitgutter'
 
 "CTRLP
 Plugin 'kien/ctrlp.vim'
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|data\'
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|data/\|__pycache__'
 
 "Multiple Cursors
 Plugin 'terryma/vim-multiple-cursors'
