@@ -11,6 +11,7 @@
       update_cache: yes
     vars:
       packages:
+        - unzip
         - vim
         - git
         - curl
