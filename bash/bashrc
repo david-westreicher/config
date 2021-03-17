@@ -14,15 +14,17 @@ PS1='${debian_chroot:+($debian_chroot)}\
 alias python='python3'
 torrents () { python ~/Documents/config/scripts/torrent.py "$@";}
 alias multiscreen='python2 ~/Documents/config/scripts/multiscreen.py'
+alias forall='python3 ~/Documents/config/scripts/forall.py'
 alias haskell='ghci'
 alias wetter='curl wttr.in/Innsbruck'
-alias search='ack'
+alias search='ack -i'
 alias music='cmus'
 alias vps='ssh david@vps -i ~/.ssh/vps'
 alias vim='nvim'
 alias largest='du -a $1 | sort -n -r | head -n 10'
 alias showimg='feh --draw-filename --scale-down --recursive --quiet --thumb-height 120 --thumb-width 120'
 alias pytorch='nvidia-docker run -it --rm --net="host" -v $(pwd):/workspace --entrypoint "python" pytorch:latest'
+alias tree='tree -I "node_modules|.env|__pycache__"'
 alias ..='cd ..'
 alias .='ll'
 

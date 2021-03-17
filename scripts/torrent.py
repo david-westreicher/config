@@ -12,12 +12,12 @@ def get_torrents(search):
     data = r.json()
     if not 'error' in data:
         for torrent in data['torrent_results']:
-            print torrent['filename']
-            print torrent['download']
-            print ''
+            print(torrent['filename'])
+            print(torrent['download'])
+            print('')
         return data['torrent_results']
     else:
-        print 'Nothing found'
+        print('Nothing found')
         return []
 
 torrents = get_torrents(' '.join(sys.argv[1:]))

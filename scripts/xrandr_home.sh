@@ -1,1 +1,2 @@
-xrandr --output DP-0 --rotate left --right-of DVI-D-0
+xrandr --output DP-2 --mode 3440x1440 --rate 99.98
+xrandr --output HDMI-0 --off
