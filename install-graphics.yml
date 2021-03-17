@@ -26,6 +26,11 @@
     with_items:
     - py3status
     - i3ipc
+    - mypy
+    - python-language-server[all]
+    - flake8
+    - black
+    - isort
     become: yes
 
   - name: Create config folders
