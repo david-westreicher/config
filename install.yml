@@ -1,0 +1,61 @@
+---
+
+- name: run the playbook tasks on the localhost
+  hosts: 127.0.0.1
+  connection: local
+  tasks:
+
+  - name: Install a list of packages
+    apt:
+      name: "{{ packages }}"
+      update_cache: yes
+    vars:
+      packages:
+        - unzip
+        - vim
+        - git
+        - curl
+        - ranger
+        - ack
+        - bash-completion
+    become: yes
+
+  - name: Create config folders
+    file:
+      path: "{{ item }}"
+      state: directory
+      recurse: yes
+    with_items:
+      - ~/Documents
+      - ~/.config/ranger
+
+  - name: Clone config files
+    git:
+      repo: 'https://github.com/david-westreicher/config'
+      dest: ~/Documents/config
+
+  - name: Create soft links
+    file:
+      src: "~/Documents/config/{{ item.path }}"
+      dest: "~/{{ item.dest }}"
+      state: link
+      force: yes
+    with_items:
+      - { path: 'ls/dircolors.ansi-dark', dest: '.dircolors' }
+      - { path: 'ranger/rc.conf', dest: '.config/ranger/rc.conf' }
+      - { path: 'vim/vimrc', dest: '.vimrc' }
+      - { path: 'python/flake8', dest: '.config/flake8' }
+
+  - name: Add bashrc config
+    lineinfile:
+      dest: ~/.bashrc
+      line: '. ~/Documents/config/bash/bashrc'
+      insertafter: EOF
+
+  - name: Install Vundle
+    git:
+      repo: 'https://github.com/VundleVim/Vundle.vim.git'
+      dest: ~/.vim/bundle/Vundle.vim
+
+  - name: Install Vundle plugins
+    shell: vim +PluginInstall +qall
