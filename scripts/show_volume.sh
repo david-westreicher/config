@@ -3,5 +3,7 @@ function get_volume {
 }
 
 volume=`get_volume`
+muted=`pacmd list-sinks | awk '/\tmuted:/ { print $2 }'`
 bar=$(seq -s "─" $(($volume / 5)) | sed 's/[0-9]//g')
-dunstify -r 502 -u low $bar
+icon=$([[ "$muted" == "yes" ]] && echo "audio-volume-muted" || echo "audio-volume-high")
+dunstify -i $icon -r 502 -u low $bar
