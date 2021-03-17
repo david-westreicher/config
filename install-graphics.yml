@@ -19,18 +19,13 @@
         - lxterminal
         - python3-pip
         - fonts-font-awesome
+        - dunst
     become: yes
 
   - name: Install i3 dependencies
-    command: "pip3 install {{ item }}"
-    with_items:
-    - py3status
-    - i3ipc
-    - mypy
-    - python-language-server[all]
-    - flake8
-    - black
-    - isort
+    pip:
+      name: [py3status, i3ipc, mypy, "python-language-server[all]", flake8, black, isort]
+      executable: pip3
     become: yes
 
   - name: Create config folders

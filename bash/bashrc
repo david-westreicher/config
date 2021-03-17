@@ -6,9 +6,9 @@ export EDITOR=vim
 bind -r '\C-s'
 stty -ixon -ixoff
 PS1='${debian_chroot:+($debian_chroot)}\
-\[\033[38;5;106m\] \[\033[1m\]\u\[\033[00m\] \
-\[\033[38;5;136m\]  \[\033[1m\]\h\[\033[00m\] \
-\[\033[38;5;32m\]  \[\033[1;4m\]\w\[\033[00m\] \
+\[\033[38;5;106m\]👨 \[\033[1m\]\u\[\033[00m\] \
+\[\033[38;5;136m\]💻 \[\033[1m\]\h\[\033[00m\] \
+\[\033[38;5;32m\]📁 \[\033[1;4m\]\w\[\033[00m\] \
 \n➤ '
 
 alias python='python3'
@@ -20,7 +20,6 @@ alias wetter='curl wttr.in/Innsbruck'
 alias search='ack -i'
 alias music='cmus'
 alias vps='ssh david@vps -i ~/.ssh/vps'
-alias vim='nvim'
 alias largest='du -a $1 | sort -n -r | head -n 10'
 alias showimg='feh --draw-filename --scale-down --recursive --quiet --thumb-height 120 --thumb-width 120'
 alias pytorch='nvidia-docker run -it --rm --net="host" -v $(pwd):/workspace --entrypoint "python" pytorch:latest'
@@ -31,7 +30,7 @@ alias .='ll'
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
-    alias ll='ls -l -a -h --color=auto'
+    alias ll='ls -l -a -h -N --color=auto'
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
