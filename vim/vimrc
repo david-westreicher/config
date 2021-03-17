@@ -5,6 +5,9 @@ filetype off                  " required
 " MY SETTINGS
 " ###########################
 
+" color
+set background=light
+
 " make backspace work
 set bs=2 
 
@@ -121,13 +124,19 @@ Plugin 'pearofducks/ansible-vim'
 " Search
 Plugin 'ddrscott/vim-side-search'
 
+" Typescript
+Plugin 'leafgarland/typescript-vim'
+
+" Vue
+Plugin 'posva/vim-vue'
+
 " Linter
-Plugin 'w0rp/ale'
-highlight ALEError ctermbg=blue
+" Plugin 'w0rp/ale'
+" highlight ALEError ctermbg=blue
 
 " Jedi
-Plugin 'davidhalter/jedi-vim'
-let g:jedi#use_tabs_not_buffers = 1
+" Plugin 'davidhalter/jedi-vim'
+" let g:jedi#use_tabs_not_buffers = 1
 
 " ############################
 " VUNDLE END
