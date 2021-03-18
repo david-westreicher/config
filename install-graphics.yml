@@ -12,6 +12,7 @@
     vars:
       packages:
         - i3
+        - i3lock-fancy
         - rofi
         - xinit
         - x11-xserver-utils
