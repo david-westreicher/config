@@ -141,6 +141,12 @@ Plugin 'leafgarland/typescript-vim'
 " Vue
 Plugin 'posva/vim-vue'
 
+" Latex
+Plugin 'lervag/vimtex'
+let g:vimtex_compiler_latexmk = {
+        \ 'executable' : 'latexmk',
+        \}
+
 " Linter
 Plugin 'w0rp/ale'
 highlight ALEError ctermbg=blue
