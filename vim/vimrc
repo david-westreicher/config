@@ -146,13 +146,14 @@ Plugin 'lervag/vimtex'
 let g:vimtex_compiler_latexmk = {
         \ 'executable' : 'latexmk',
         \}
+let g:vimtex_complete_enabled = 1
 
 " Linter
 Plugin 'w0rp/ale'
 highlight ALEError ctermbg=blue
 let g:ale_completion_enabled = 1
 let g:ale_linter_aliases = {'vue': ['vue', 'javascript']}
-let g:ale_linters = {'vue': ['eslint', 'vls'], 'python': ['flake8', 'mypy', 'pyls']}
+let g:ale_linters = {'vue': ['eslint', 'vls'], 'python': ['flake8', 'mypy', 'pyls'], 'tex': []}
 let g:ale_fixers = {'python': ['black', 'isort', 'remove_trailing_lines', 'trim_whitespace']}
 let g:ale_python_pyls_config = {'pyls': { 'configurationSources': ['flake8'] }}
 let g:ale_c_clang_options="-I/usr/lib/x86_64-linux-gnu/openmpi/include"
