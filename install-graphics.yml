@@ -93,3 +93,6 @@
 
   - name: Install fonts
     command: "fc-cache -f -v"
+
+  - name: Install nvim plugins
+    command: "nvim +PlugInstall +qall"
