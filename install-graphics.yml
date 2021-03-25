@@ -18,29 +18,15 @@
         - x11-xserver-utils
         - feh
         - lxterminal
-        - python3-pip
         - fonts-font-awesome
         - dunst
-        - nodejs
-        - npm
         - xdotool
         - zathura
-        - neovim
     become: yes
-
-  - name: Create nvim config folder
-    file:
-      path: ~/.config/nvim/autoload/
-      state: directory
-
-  - name: Install vim-plug for neovim
-    get_url:
-      url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-      dest: ~/.config/nvim/autoload/plug.vim
 
   - name: Install i3 dependencies
     pip:
-      name: [py3status, i3ipc, mypy, "python-language-server[all]", flake8, black, isort]
+      name: [py3status, i3ipc]
       executable: pip3
     become: yes
 
@@ -69,20 +55,8 @@
       - { path: 'i3/i3.conf', dest: '.i3/config' }
       - { path: 'i3/status.conf', dest: '.i3/i3status.conf' }
       - { path: 'i3/py3status', dest: '.i3/py3status' }
-      - { path: 'nvim/init.vim', dest: '.config/nvim/init.vim' }
-      - { path: 'nvim/coc-settings.json', dest: '.config/nvim/coc-settings.json' }
       - { path: 'dunst/dunstrc', dest: '.config/dunst/dunstrc' }
       - { path: 'bash/.bash_profile', dest: '.bash_profile' }
-
-  - name: Install linked software
-    copy:
-      src: "~/Documents/config/scripts/{{ item.path }}"
-      dest: "/usr/local/bin/{{ item.path }}"
-      force: yes
-      mode: u=rwx,g=rx,o=rx
-    with_items:
-      - { path: 'latexmk' }
-    become: yes
 
   - name: Install twitter emoji
     unarchive:
@@ -98,6 +72,3 @@
 
   - name: Install fonts
     command: "fc-cache -f -v"
-
-  - name: Install nvim plugins
-    command: "nvim +PlugInstall +qall"
