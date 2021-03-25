@@ -12,12 +12,15 @@
     vars:
       packages:
         - unzip
-        - vim
+        - neovim
         - git
         - curl
         - ranger
         - ack
         - bash-completion
+        - python3-pip
+        - nodejs
+        - npm
     become: yes
 
   - name: Create config folders
@@ -28,6 +31,7 @@
     with_items:
       - ~/Documents
       - ~/.config/ranger
+      - ~/.config/nvim/autoload
 
   - name: Clone config files
     git:
@@ -43,8 +47,8 @@
     with_items:
       - { path: 'ls/dircolors.ansi-dark', dest: '.dircolors' }
       - { path: 'ranger/rc.conf', dest: '.config/ranger/rc.conf' }
-      - { path: 'vim/vimrc', dest: '.vimrc' }
-      - { path: 'python/flake8', dest: '.config/flake8' }
+      - { path: 'nvim/init.vim', dest: '.config/nvim/init.vim' }
+      - { path: 'nvim/coc-settings.json', dest: '.config/nvim/coc-settings.json' }
 
   - name: Add bashrc config
     lineinfile:
@@ -52,10 +56,26 @@
       line: '. ~/Documents/config/bash/bashrc'
       insertafter: EOF
 
-  - name: Install Vundle
-    git:
-      repo: 'https://github.com/VundleVim/Vundle.vim.git'
-      dest: ~/.vim/bundle/Vundle.vim
+  - name: Install python
+    pip:
+      name: [black]
+      executable: pip3
+    become: yes
 
-  - name: Install Vundle plugins
-    shell: vim +PluginInstall +qall
+  - name: Install vim-plug for neovim
+    get_url:
+      url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+      dest: ~/.config/nvim/autoload/plug.vim
+
+  - name: Install nvim plugins
+    command: "nvim +PlugInstall +qall"
+
+  - name: Install linked software
+    copy:
+      src: "~/Documents/config/scripts/{{ item.path }}"
+      dest: "/usr/local/bin/{{ item.path }}"
+      force: yes
+      mode: u=rwx,g=rx,o=rx
+    with_items:
+      - { path: 'latexmk' }
+    become: yes
