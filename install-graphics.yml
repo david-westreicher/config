@@ -22,6 +22,7 @@
         - dunst
         - xdotool
         - zathura
+        - flameshot
     become: yes
 
   - name: Install i3 dependencies
