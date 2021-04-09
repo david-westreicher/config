@@ -54,10 +54,10 @@ highlight CocErrorHighlight ctermfg=DarkRed
 highlight CocWarningHighlight ctermfg=DarkRed
 highlight CocInfoHighlight ctermfg=DarkRed
 highlight CocHintHighlight ctermfg=DarkRed
-highlight CocErrorLine ctermbg=DarkGray
-highlight CocWarningLine ctermbg=DarkGray
-highlight CocInfoLine ctermbg=DarkGray
-highlight CocHintLine ctermbg=DarkGray
+highlight CocErrorLine ctermbg=238
+highlight CocWarningLine ctermbg=238
+highlight CocInfoLine ctermbg=238
+highlight CocHintLine ctermbg=238
 highlight CocHighlightText ctermbg=239
 highlight clear SignColumn
 
