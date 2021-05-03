@@ -41,6 +41,7 @@
       - ~/.local/share/applications
       - ~/.config/lxterminal
       - ~/.config/dunst
+      - ~/.config/zathura
       - ~/.i3
 
   - name: Create soft links
@@ -58,6 +59,7 @@
       - { path: 'i3/py3status', dest: '.i3/py3status' }
       - { path: 'dunst/dunstrc', dest: '.config/dunst/dunstrc' }
       - { path: 'bash/.bash_profile', dest: '.bash_profile' }
+      - { path: 'zathura/zathurarc', dest: '.config/zathura/zathurarc' }
 
   - name: Install twitter emoji
     unarchive:
