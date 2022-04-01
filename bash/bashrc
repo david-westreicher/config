@@ -3,6 +3,9 @@
 export TERM=xterm-256color
 export EDITOR=vim
 
+# Increase bash history
+export HISTFILESIZE=10000
+
 bind -r '\C-s'
 stty -ixon -ixoff
 PS1='${debian_chroot:+($debian_chroot)}\
@@ -25,6 +28,7 @@ alias largest='du -a $1 | sort -n -r | head -n 10'
 alias showimg='feh --draw-filename --scale-down --recursive --quiet --thumb-height 120 --thumb-width 120'
 alias pytorch='nvidia-docker run -it --rm --net="host" -v $(pwd):/workspace --entrypoint "python" pytorch:latest'
 alias tree='tree -I "node_modules|.env|__pycache__"'
+alias gcloud='~/.google-cloud-sdk/bin/gcloud'
 alias ..='cd ..'
 alias .='ll'
 
@@ -45,3 +49,13 @@ export LESS_TERMCAP_se=$(printf '\e[0m') # leave standout mode
 export LESS_TERMCAP_so=$(printf '\e[01;33m') # enter standout mode - yellow
 export LESS_TERMCAP_ue=$(printf '\e[0m') # leave underline mode
 export LESS_TERMCAP_us=$(printf '\e[04;36m') # enter underline mode - cyan
+
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+export PATH="$PYENV_ROOT/shims:$PATH"
+eval "$(pyenv init -)"
+
+# fuzzy file search
+source /usr/share/doc/fzf/examples/key-bindings.bash
+source /usr/share/doc/fzf/examples/completion.bash

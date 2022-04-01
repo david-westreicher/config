@@ -34,6 +34,9 @@ map <right> <nop>
 nnoremap j gj
 nnoremap k gk
 
+" cut until end of line
+nnoremap S vg_"_d
+
 " quicksave/quickquit
 noremap <C-S> :w<CR>
 inoremap <c-s> <Esc>:w<CR>
@@ -127,7 +130,7 @@ Plug 'airblade/vim-gitgutter'
 
 "CTRLP
 Plug 'kien/ctrlp.vim'
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|data/\|__pycache__'
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|__pycache__|.git.*'
 
 "Multiple Cursors
 Plug 'terryma/vim-multiple-cursors'
