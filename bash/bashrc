@@ -24,6 +24,7 @@ alias vps='ssh david@vps -i ~/.ssh/vps'
 alias largest='du -a $1 | sort -n -r | head -n 10'
 alias showimg='feh --draw-filename --scale-down --recursive --quiet --thumb-height 120 --thumb-width 120'
 alias pytorch='nvidia-docker run -it --rm --net="host" -v $(pwd):/workspace --entrypoint "python" pytorch:latest'
+alias jupyter-lab='nvidia-docker run -it --rm --net="host" -v $(pwd):/workspace --entrypoint "jupyter-lab" pytorch:latest --allow-root --ip 0.0.0.0'
 alias tree='tree -I "node_modules|.env|__pycache__"'
 alias ..='cd ..'
 alias .='ll'
@@ -45,3 +46,7 @@ export LESS_TERMCAP_se=$(printf '\e[0m') # leave standout mode
 export LESS_TERMCAP_so=$(printf '\e[01;33m') # enter standout mode - yellow
 export LESS_TERMCAP_ue=$(printf '\e[0m') # leave underline mode
 export LESS_TERMCAP_us=$(printf '\e[04;36m') # enter underline mode - cyan
+
+# fuzzy file search
+source /usr/share/doc/fzf/examples/key-bindings.bash
+source /usr/share/bash-completion/completions/fzf
