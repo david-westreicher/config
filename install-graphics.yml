@@ -41,6 +41,7 @@
       - ~/.local/share/applications
       - ~/.config/lxterminal
       - ~/.config/dunst
+      - ~/.config/rofi
       - ~/.i3
 
   - name: Create soft links
@@ -57,7 +58,7 @@
       - { path: 'i3/status.conf', dest: '.i3/i3status.conf' }
       - { path: 'i3/py3status', dest: '.i3/py3status' }
       - { path: 'dunst/dunstrc', dest: '.config/dunst/dunstrc' }
-      - { path: 'bash/.bash_profile', dest: '.bash_profile' }
+      - { path: 'rofi/config.rasi', dest: '.config/rofi/config.rasi' }
 
   - name: Install twitter emoji
     unarchive:
