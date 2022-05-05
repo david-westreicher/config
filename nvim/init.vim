@@ -50,6 +50,7 @@ set number
 set tw=0
 highlight LineNr ctermfg=grey
 highlight Search ctermfg=black
+highlight Visual ctermbg=darkgrey
 highlight CocErrorHighlight ctermfg=DarkRed
 highlight CocWarningHighlight ctermfg=DarkRed
 highlight CocInfoHighlight ctermfg=DarkRed
@@ -155,7 +156,7 @@ Plug 'pearofducks/ansible-vim'
 Plug 'leafgarland/typescript-vim'
 
 " Vue
-" Plug 'posva/vim-vue'
+Plug 'posva/vim-vue'
 
 " Latex
 Plug 'lervag/vimtex', {'tag': 'v1.0'}
