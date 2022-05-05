@@ -70,6 +70,15 @@
   - name: Install nvim plugins
     command: "nvim +PlugInstall +qall"
 
+  - name: Build docker images
+    docker_image:
+      name: "{{ item.dest }}"
+      build:
+        path: "~/Documents/config/scripts/{{ item.path }}"
+      source: build
+    with_items:
+        - { path: 'latex/Dockerfile', dest: 'latex_tools'}
+
   - name: Install linked software
     copy:
       src: "~/Documents/config/scripts/{{ item.path }}"

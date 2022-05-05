@@ -12,7 +12,6 @@
     vars:
       packages:
         - i3
-        - i3lock-fancy
         - rofi
         - xinit
         - x11-xserver-utils
@@ -42,6 +41,7 @@
       - ~/.config/lxterminal
       - ~/.config/dunst
       - ~/.config/rofi
+      - ~/.config/zathura
       - ~/.i3
 
   - name: Create soft links
@@ -59,6 +59,8 @@
       - { path: 'i3/py3status', dest: '.i3/py3status' }
       - { path: 'dunst/dunstrc', dest: '.config/dunst/dunstrc' }
       - { path: 'rofi/config.rasi', dest: '.config/rofi/config.rasi' }
+      - { path: 'bash/.bash_profile', dest: '.bash_profile' }
+      - { path: 'zathura/zathurarc', dest: '.config/zathura/zathurarc' }
 
   - name: Install twitter emoji
     unarchive:
@@ -74,3 +76,12 @@
 
   - name: Install fonts
     command: "fc-cache -f -v"
+
+  - name: Get i3lock fancy rapid
+    git:
+        repo: 'https://github.com/yvbbrjdr/i3lock-fancy-rapid'
+        dest: ./compile/i3lock
+
+  - name: Build i3lock fancy rapid
+    make:
+        chdir: ./compile/i3lock

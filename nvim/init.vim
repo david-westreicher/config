@@ -50,6 +50,7 @@ set number
 set tw=0
 highlight LineNr ctermfg=grey
 highlight Search ctermfg=black
+highlight Visual ctermbg=darkgrey
 highlight CocErrorHighlight ctermfg=DarkRed
 highlight CocWarningHighlight ctermfg=DarkRed
 highlight CocInfoHighlight ctermfg=DarkRed
@@ -155,7 +156,7 @@ Plug 'pearofducks/ansible-vim'
 Plug 'leafgarland/typescript-vim'
 
 " Vue
-" Plug 'posva/vim-vue'
+Plug 'posva/vim-vue'
 
 " Latex
 Plug 'lervag/vimtex', {'tag': 'v1.0'}
@@ -163,12 +164,14 @@ let g:vimtex_compiler_latexmk = {
         \ 'executable' : 'latexmk',
         \}
 let g:vimtex_complete_enabled = 1
+let g:vimtex_latexmk_continuous = 0
 let g:vimtex_view_method = 'zathura'
 let g:tex_flavor = 'latex'
 
 " Coc
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-let g:coc_global_extensions = ['coc-vimtex', 'coc-pyright', 'coc-json', 'coc-vetur']
+let g:coc_global_extensions = ['coc-vimtex', 'coc-pyright', 'coc-json', 'coc-vetur', 'coc-tsserver']
+
 
 
 " ############################
