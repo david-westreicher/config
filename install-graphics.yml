@@ -12,7 +12,6 @@
     vars:
       packages:
         - i3
-        - i3lock-fancy
         - rofi
         - xinit
         - x11-xserver-utils
@@ -75,3 +74,12 @@
 
   - name: Install fonts
     command: "fc-cache -f -v"
+
+  - name: Get i3lock fancy rapid
+    git:
+        repo: 'https://github.com/yvbbrjdr/i3lock-fancy-rapid'
+        dest: ./compile/i3lock
+
+  - name: Build i3lock fancy rapid
+    make:
+        chdir: ./compile/i3lock
