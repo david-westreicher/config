@@ -53,6 +53,7 @@
     with_items:
       - { path: 'xdg/mimeapps.list', dest: '.local/share/applications/mimeapps.list' }
       - { path: 'X/resources', dest: '.Xresources' }
+      - { path: 'X/.xinitrc', dest: '.xinitrc' }
       - { path: 'lxterminal/lxterminal.conf', dest: '.config/lxterminal/lxterminal.conf' }
       - { path: 'i3/i3.conf', dest: '.i3/config' }
       - { path: 'i3/status.conf', dest: '.i3/i3status.conf' }
