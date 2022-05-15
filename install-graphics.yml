@@ -30,6 +30,11 @@
       executable: pip3
     become: yes
 
+  - name: Install alacritty
+    ansible.builtin.script: scripts/install_alacritty.sh
+    args:
+      creates: /usr/bin/alacritty
+
   - name: Create config folders
     file:
       path: "{{ item }}"
@@ -38,6 +43,7 @@
     with_items:
       - ~/.local/share/fonts
       - ~/.local/share/applications
+      - ~/.config/alacritty
       - ~/.config/lxterminal
       - ~/.config/dunst
       - ~/.config/rofi
@@ -54,6 +60,8 @@
       - { path: 'xdg/mimeapps.list', dest: '.local/share/applications/mimeapps.list' }
       - { path: 'X/resources', dest: '.Xresources' }
       - { path: 'X/.xinitrc', dest: '.xinitrc' }
+      - { path: 'alacritty/alacritty.yml', dest: '.config/alacritty/alacritty.yml' }
+      - { path: 'alacritty/alacritty_sonokai.yml', dest: '.config/alacritty/alacritty_sonokai.yml' }
       - { path: 'lxterminal/lxterminal.conf', dest: '.config/lxterminal/lxterminal.conf' }
       - { path: 'i3/i3.conf', dest: '.i3/config' }
       - { path: 'i3/status.conf', dest: '.i3/i3status.conf' }
