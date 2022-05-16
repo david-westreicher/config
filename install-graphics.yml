@@ -22,6 +22,7 @@
         - xdotool
         - zathura
         - flameshot
+        - picom
     become: yes
 
   - name: Install i3 dependencies
@@ -46,6 +47,7 @@
       - ~/.config/alacritty
       - ~/.config/lxterminal
       - ~/.config/dunst
+      - ~/.config/picom
       - ~/.config/rofi
       - ~/.config/zathura
       - ~/.i3
@@ -63,6 +65,7 @@
       - { path: 'lxterminal/lxterminal.conf', dest: '.config/lxterminal/lxterminal.conf' }
       - { path: 'alacritty/alacritty.yml', dest: '.config/alacritty/alacritty.yml' }
       - { path: 'alacritty/alacritty_sonokai.yml', dest: '.config/alacritty/alacritty_sonokai.yml' }
+      - { path: 'picom/picom.conf', dest: '.config/picom/picom.conf' }
       - { path: 'i3/i3.conf', dest: '.i3/config' }
       - { path: 'i3/status.conf', dest: '.i3/i3status.conf' }
       - { path: 'i3/py3status', dest: '.i3/py3status' }
