@@ -35,6 +35,7 @@
     ansible.builtin.script: scripts/install_alacritty.sh
     args:
       creates: /usr/bin/alacritty
+    become: yes
 
   - name: Create config folders
     file:
