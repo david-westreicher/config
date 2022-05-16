@@ -134,18 +134,8 @@ Plug 'terryma/vim-multiple-cursors'
 " signatures
 Plug 'kshenoy/vim-signature'
 
-" autopep8
-" Plug 'tell-k/vim-autopep8'
-" let g:autopep8_ignore='E501'
-
 " ide
 " Plug 'scrooloose/nerdtree'
-
-" Dockerfile
-Plug 'ekalinin/Dockerfile.vim'
-
-" Ansible
-Plug 'pearofducks/ansible-vim'
 
 " Search
 " Plug 'ddrscott/vim-side-search'

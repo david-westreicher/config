@@ -16,8 +16,8 @@
         - xinit
         - x11-xserver-utils
         - feh
-        - lxterminal
         - fonts-font-awesome
+        - w3m-img # used for ranger image preview
         - dunst
         - xdotool
         - zathura
