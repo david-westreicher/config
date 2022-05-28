@@ -75,6 +75,7 @@
       - { path: 'rofi/config.rasi', dest: '.config/rofi/config.rasi' }
       - { path: 'bash/.bash_profile', dest: '.bash_profile' }
       - { path: 'zathura/zathurarc', dest: '.config/zathura/zathurarc' }
+      - { path: 'font/fonts.conf', dest: '.config/fontconfig/fonts.conf' }
 
   - name: Install twitter emoji
     unarchive:
