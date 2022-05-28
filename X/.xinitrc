@@ -1,1 +1,2 @@
-exec dbus-launch --autolaunch=$(cat /var/lib/dbus/machine-id) i3
+export STARTUP=/usr/local/bin/i3
+. /etc/X11/Xsession
