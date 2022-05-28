@@ -23,6 +23,7 @@
         - zathura
         - flameshot
         - picom
+        - papirus-icon-theme
     become: yes
 
   - name: Install i3 dependencies
