@@ -24,6 +24,7 @@
         - flameshot
         - picom
         - papirus-icon-theme
+        - ibus # nicer input management (applet, emojis)
     become: yes
 
   - name: Install i3 dependencies

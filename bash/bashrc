@@ -15,6 +15,7 @@ alias python='python3'
 torrents () { python ~/Documents/config/scripts/torrent.py "$@";}
 alias multiscreen='python2 ~/Documents/config/scripts/multiscreen.py'
 alias forall='python3 ~/Documents/config/scripts/forall.py'
+alias cal='ncal -b -3'
 alias haskell='ghci'
 alias wetter='curl wttr.in/Innsbruck'
 alias search='ack -i'
