@@ -21,6 +21,7 @@
         - python3-pip
         - nodejs
         - npm
+        - fzf
     become: yes
 
   - name: Create config folders

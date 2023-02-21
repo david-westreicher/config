@@ -35,9 +35,7 @@ alias largest='du -a $1 | sort -n -r | head -n 10'
 alias showimg='feh --draw-filename --scale-down --recursive --quiet --thumb-height 120 --thumb-width 120'
 alias pytorch='nvidia-docker run -it --rm --net="host" -v $(pwd):/workspace --entrypoint "python" pytorch:latest'
 alias tree='tree -I "node_modules|.env|__pycache__"'
-alias gcloud='~/.google-cloud-sdk/bin/gcloud'
 alias ..='cd ..'
-alias .='ll'
 
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -63,6 +61,17 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 export PATH="$PYENV_ROOT/shims:$PATH"
 eval "$(pyenv init -)"
 
+#go
+export PATH="/home/david/go/bin:$PATH"
+
 # fuzzy file search
 source /usr/share/doc/fzf/examples/key-bindings.bash
-source /usr/share/doc/fzf/examples/completion.bash
+# source /usr/share/doc/fzf/examples/completion.bash
+# export DOCKER_HOST="unix:///mnt/wsl/shared-docker/docker.sock"
+
+# make ctrl-w (word delete) in bash nicer
+stty werase undef
+bind '\C-w:unix-filename-rubout'
+
+# load direnv
+eval "$(direnv hook bash)"

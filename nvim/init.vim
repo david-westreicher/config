@@ -11,6 +11,15 @@ if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 
+" WSL yank support
+let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path according to your mount point
+if executable(s:clip)
+    augroup WSLYank
+        autocmd!
+        autocmd TextYankPost * if v:event.operator ==# 'y' | call system(s:clip, @0) | endif
+    augroup END
+endif
+
 " color
 set background=light
 " make backspace work
@@ -19,7 +28,7 @@ set bs=2
 " make copy&paste work
 set pastetoggle=<F9>
 set clipboard=unnamedplus
-vmap p "_dP
+" vmap p "_dP
 
 " mouse
 set mouse=a
@@ -51,6 +60,7 @@ vnoremap > >gv
 " ide settings
 set number
 set tw=0
+highlight Visual cterm=none ctermbg=darkgrey ctermfg=cyan
 highlight LineNr ctermfg=grey
 highlight Search ctermfg=black
 highlight CocErrorHighlight ctermfg=DarkRed
@@ -123,14 +133,15 @@ let g:airline_symbols.paste = '∥'
 let g:airline_symbols.whitespace = 'Ξ'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_solarized_bg='dark'
-let g:airline_theme='solarized'
+let g:airline_theme='sonokai'
 
 "GIT
 Plug 'airblade/vim-gitgutter'
 
 "CTRLP
 Plug 'kien/ctrlp.vim'
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|__pycache__|.git.*'
+let g:ctrlp_custom_ignore = 'node_modules/\|DS_Store/\|\.venv/\|__pycache__/\|\.git/\|\.env/\|\.mypy_cache/\|htmlcov/\|\.pytest_cache/'
+let g:ctrlp_show_hidden = 1
 
 "Multiple Cursors
 Plug 'terryma/vim-multiple-cursors'
@@ -158,10 +169,21 @@ Plug 'pearofducks/ansible-vim'
 " Plug 'ddrscott/vim-side-search'
 
 " Typescript
-Plug 'leafgarland/typescript-vim'
+" Plug 'leafgarland/typescript-vim'
+
+" Theme
+Plug 'sainnhe/sonokai'
+Plug 'norcalli/nvim-colorizer.lua'
 
 " Vue
 " Plug 'posva/vim-vue'
+
+" Python
+Plug 'vim-python/python-syntax'
+let g:python_highlight_all = 1
+
+" Jinja
+Plug 'glench/vim-jinja2-syntax'
 
 " Latex
 Plug 'lervag/vimtex', {'tag': 'v1.0'}
@@ -380,3 +402,9 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+set termguicolors
+colorscheme sonokai
+
+lua require'colorizer'.setup()
+highlight Comment cterm=none gui=none

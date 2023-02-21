@@ -5,11 +5,21 @@
     "diagnostic.checkCurrentLine": true,
     "python.formatting.provider": "black",
     "python.formatting.blackPath": "/usr/local/bin/black",
+    "python.formatting.blackArgs": ["--fast"],
     "python.linting.enabled": true,
     "python.linting.mypyEnabled": false,
     "python.linting.flake8Enabled": false,
     "python.linting.flake8CategorySeverity.E": "Warning",
     "python.linting.flake8CategorySeverity.F": "Warning",
-    "coc.preferences.formatOnSaveFiletypes": ["python"],
-    "coc.preferences.jumpCommand": "CocSplitIfNotOpen"
+    "coc.preferences.formatOnSaveFiletypes": ["python", "typescript"],
+    "coc.preferences.jumpCommand": "CocSplitIfNotOpen",
+    "languageserver": {
+        "terraform": {
+            "command": "terraform-ls",
+            "args": ["serve"],
+            "filetypes": ["terraform", "tf"],
+            "initializationOptions": {},
+            "settings": {}
+        }
+    }
 }
