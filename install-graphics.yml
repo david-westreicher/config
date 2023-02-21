@@ -31,7 +31,7 @@
 
   - name: Install i3 dependencies
     pip:
-      name: [py3status, i3ipc, Pillow] # Pillow is used in media_notification
+      name: [Pillow] # Pillow is used in media_notification
       executable: pip3
     become: yes
 
