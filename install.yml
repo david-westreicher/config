@@ -12,6 +12,7 @@
     vars:
       packages:
         - unzip
+        - avahi-daemon
         - neovim
         - git
         - curl
@@ -21,6 +22,8 @@
         - python3-pip
         - nodejs
         - npm
+        - cookiecutter
+        - fzf
     become: yes
 
   - name: Create config folders
@@ -33,11 +36,6 @@
       - ~/.config/ranger
       - ~/.config/nvim/autoload
 
-  - name: Clone config files
-    git:
-      repo: 'https://github.com/david-westreicher/config'
-      dest: ~/Documents/config
-
   - name: Create soft links
     file:
       src: "~/Documents/config/{{ item.path }}"
@@ -46,6 +44,7 @@
       force: yes
     with_items:
       - { path: 'ls/dircolors.nord', dest: '.dircolors' }
+      - { path: 'git/config', dest: '.gitconfig' }
       - { path: 'ranger/rc.conf', dest: '.config/ranger/rc.conf' }
       - { path: 'nvim/init.vim', dest: '.config/nvim/init.vim' }
       - { path: 'nvim/coc-settings.json', dest: '.config/nvim/coc-settings.json' }

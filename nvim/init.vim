@@ -22,6 +22,9 @@ vmap p "_dP
 " mouse
 set mouse=a
 
+" relative line numbers
+set relativenumber
+
 " unbind arrow keys :D
 map <up> <nop>
 map <down> <nop>
@@ -378,6 +381,7 @@ let g:sonokai_style = 'default'
 let g:sonokai_diagnostic_text_highlight = 0
 let g:sonokai_diagnostic_line_highlight = 1
 let g:sonokai_diagnostic_virtual_text = 'colored'
+let g:sonokai_disable_italic_comment = 1
 colorscheme sonokai
 
 lua require'colorizer'.setup()
