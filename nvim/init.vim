@@ -11,8 +11,6 @@ if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 
-" color
-set background=light
 " make backspace work
 set bs=2 
 
@@ -121,7 +119,7 @@ let g:airline_symbols.paste = '∥'
 let g:airline_symbols.whitespace = 'Ξ'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_solarized_bg='dark'
-let g:airline_theme='solarized'
+let g:airline_theme='sonokai'
 
 "GIT
 Plug 'airblade/vim-gitgutter'
@@ -136,18 +134,8 @@ Plug 'terryma/vim-multiple-cursors'
 " signatures
 Plug 'kshenoy/vim-signature'
 
-" autopep8
-" Plug 'tell-k/vim-autopep8'
-" let g:autopep8_ignore='E501'
-
 " ide
 " Plug 'scrooloose/nerdtree'
-
-" Dockerfile
-Plug 'ekalinin/Dockerfile.vim'
-
-" Ansible
-Plug 'pearofducks/ansible-vim'
 
 " Search
 " Plug 'ddrscott/vim-side-search'
@@ -157,6 +145,13 @@ Plug 'leafgarland/typescript-vim'
 
 " Vue
 Plug 'posva/vim-vue'
+
+" Theme
+Plug 'sainnhe/sonokai'
+
+" Color in source code
+Plug 'norcalli/nvim-colorizer.lua'
+
 
 " Latex
 Plug 'lervag/vimtex', {'tag': 'v1.0'}
@@ -202,7 +197,7 @@ set nobackup
 set nowritebackup
 
 " Give more space for displaying messages.
-set cmdheight=2
+set cmdheight=1
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
@@ -377,3 +372,12 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+set termguicolors
+let g:sonokai_style = 'default'
+let g:sonokai_diagnostic_text_highlight = 0
+let g:sonokai_diagnostic_line_highlight = 1
+let g:sonokai_diagnostic_virtual_text = 'colored'
+colorscheme sonokai
+
+lua require'colorizer'.setup()

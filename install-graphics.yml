@@ -16,18 +16,27 @@
         - xinit
         - x11-xserver-utils
         - feh
-        - lxterminal
         - fonts-font-awesome
+        - w3m-img # used for ranger image preview
         - dunst
         - xdotool
         - zathura
         - flameshot
+        - picom
+        - papirus-icon-theme
+        - ibus # nicer input management (applet, emojis)
     become: yes
 
   - name: Install i3 dependencies
     pip:
-      name: [py3status, i3ipc]
+      name: [py3status, i3ipc, Pillow] # Pillow is used in media_notification
       executable: pip3
+    become: yes
+
+  - name: Install alacritty
+    ansible.builtin.script: scripts/install_alacritty.sh
+    args:
+      creates: /usr/bin/alacritty
     become: yes
 
   - name: Create config folders
@@ -38,8 +47,10 @@
     with_items:
       - ~/.local/share/fonts
       - ~/.local/share/applications
+      - ~/.config/alacritty
       - ~/.config/lxterminal
       - ~/.config/dunst
+      - ~/.config/picom
       - ~/.config/rofi
       - ~/.config/zathura
       - ~/.i3
@@ -53,7 +64,11 @@
     with_items:
       - { path: 'xdg/mimeapps.list', dest: '.local/share/applications/mimeapps.list' }
       - { path: 'X/resources', dest: '.Xresources' }
+      - { path: 'X/.xinitrc', dest: '.xinitrc' }
       - { path: 'lxterminal/lxterminal.conf', dest: '.config/lxterminal/lxterminal.conf' }
+      - { path: 'alacritty/alacritty.yml', dest: '.config/alacritty/alacritty.yml' }
+      - { path: 'alacritty/alacritty_sonokai.yml', dest: '.config/alacritty/alacritty_sonokai.yml' }
+      - { path: 'picom/picom.conf', dest: '.config/picom/picom.conf' }
       - { path: 'i3/i3.conf', dest: '.i3/config' }
       - { path: 'i3/status.conf', dest: '.i3/i3status.conf' }
       - { path: 'i3/py3status', dest: '.i3/py3status' }
@@ -61,6 +76,7 @@
       - { path: 'rofi/config.rasi', dest: '.config/rofi/config.rasi' }
       - { path: 'bash/.bash_profile', dest: '.bash_profile' }
       - { path: 'zathura/zathurarc', dest: '.config/zathura/zathurarc' }
+      - { path: 'font/fonts.conf', dest: '.config/fontconfig/fonts.conf' }
 
   - name: Install twitter emoji
     unarchive:

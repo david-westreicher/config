@@ -136,6 +136,8 @@ configuration {
 /*	me-select-entry: "MousePrimary";*/
 /*	me-accept-entry: "MouseDPrimary";*/
 /*	me-accept-custom: "Control+MouseDPrimary";*/
+  drun-icon-theme: "Papirus";
+  icon-theme: "Papirus";
   timeout {
       action: "kb-cancel";
       delay:  0;
@@ -153,24 +155,24 @@ configuration {
 @theme "/usr/share/rofi/themes/solarized.rasi"
 
 #window {
-    background-color: #363636;
-    foreground-color: #859900;
-    border-color: #859900;
+    background-color: #36363633;
+    foreground-color: #E2E2E3;
+    border-color: #9ED072;
     border: 5;
     width: 20%;
 }
 
 #element.selected.normal {
-    background-color: #859900;
-    text-color: #D33682;
+    background-color: #9ED07233;
+    text-color: #E2E2E3;
 }
 
 #element.normal.normal {
-    background-color: #363636;
+    background-color: #36363633;
 }
 
 #element.alternate.normal {
-    background-color: #363636;
+    background-color: #36363633;
 }
 
 

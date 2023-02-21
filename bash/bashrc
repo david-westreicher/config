@@ -6,15 +6,16 @@ export EDITOR=vim
 bind -r '\C-s'
 stty -ixon -ixoff
 PS1='${debian_chroot:+($debian_chroot)}\
-\[\033[38;5;106m\]👨 \[\033[1m\]\u\[\033[00m\] \
-\[\033[38;5;136m\]💻 \[\033[1m\]\h\[\033[00m\] \
-\[\033[38;5;32m\]📁 \[\033[1;4m\]\w\[\033[00m\] \
+\[\033[01;31m\]👨 \[\033[1m\]\u\[\033[00m\] \
+\[\033[01;32m\]💻 \[\033[1m\]\h\[\033[00m\] \
+\[\033[01;34m\]📁 \[\033[1;4m\]\w\[\033[00m\] \
 \n➤ '
 
 alias python='python3'
 torrents () { python ~/Documents/config/scripts/torrent.py "$@";}
 alias multiscreen='python2 ~/Documents/config/scripts/multiscreen.py'
 alias forall='python3 ~/Documents/config/scripts/forall.py'
+alias cal='ncal -b -3'
 alias haskell='ghci'
 alias wetter='curl wttr.in/Innsbruck'
 alias search='ack -i'
