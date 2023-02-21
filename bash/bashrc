@@ -1,17 +1,24 @@
 # This configs were added by https://github.com/david-westreicher/config/installconfigs.sh
 # use 256 colors, disable ctrl+s
 export TERM=xterm-256color
-export EDITOR=vim
+export EDITOR=nvim
+export VISUAL=nvim
 
 # Increase bash history
-export HISTFILESIZE=10000
+export HISTFILESIZE=
+export HISTSIZE=1000000
+export HISTFILE='/home/david/.bash_history_eternal'
+# export FZF_DEFAULT_OPTS='--history-size=100000'
+# save history on every command
+shopt -s histappend
+PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
 
 bind -r '\C-s'
 stty -ixon -ixoff
 PS1='${debian_chroot:+($debian_chroot)}\
-\[\033[38;5;106m\]👨 \[\033[1m\]\u\[\033[00m\] \
-\[\033[38;5;136m\]💻 \[\033[1m\]\h\[\033[00m\] \
-\[\033[38;5;32m\]📁 \[\033[1;4m\]\w\[\033[00m\] \
+\[\033[01;31m\]😃 \[\033[1m\]\u\[\033[00m\] \
+\[\033[01;32m\]💻 \[\033[1m\]\h\[\033[00m\] \
+\[\033[01;34m\]📁 \[\033[1;4m\]\w\[\033[00m\] \
 \n➤ '
 
 alias python='python3'
