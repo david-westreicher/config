@@ -12,6 +12,7 @@
     vars:
       packages:
         - unzip
+        - avahi-daemon
         - neovim
         - git
         - curl
@@ -21,6 +22,8 @@
         - python3-pip
         - nodejs
         - npm
+        - cookiecutter
+        - fzf
     become: yes
 
   - name: Create config folders
@@ -32,11 +35,6 @@
       - ~/Documents
       - ~/.config/ranger
       - ~/.config/nvim/autoload
-
-  - name: Clone config files
-    git:
-      repo: 'https://github.com/david-westreicher/config'
-      dest: ~/Documents/config
 
   - name: Create soft links
     file:

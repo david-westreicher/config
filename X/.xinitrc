@@ -1,2 +1,2 @@
-export STARTUP=/usr/local/bin/i3
+export STARTUP=/usr/bin/i3
 . /etc/X11/Xsession

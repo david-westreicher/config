@@ -23,7 +23,9 @@
         - zathura
         - flameshot
         - picom
+        - playerctl
         - papirus-icon-theme
+        - udiskie
         - ibus # nicer input management (applet, emojis)
     become: yes
 
