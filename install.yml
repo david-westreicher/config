@@ -36,6 +36,12 @@
       - ~/.config/ranger
       - ~/.config/nvim/autoload
 
+  - name: Install diff-so-fancy for nice git diff messages
+    community.general.npm:
+      name: diff-so-fancy
+      global: true
+      state: present
+
   - name: Create soft links
     file:
       src: "~/Documents/config/{{ item.path }}"

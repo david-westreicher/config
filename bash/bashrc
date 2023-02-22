@@ -1,12 +1,22 @@
 # This configs were added by https://github.com/david-westreicher/config/installconfigs.sh
 # use 256 colors, disable ctrl+s
 export TERM=xterm-256color
-export EDITOR=vim
+export EDITOR=nvim
+export VISUAL=nvim
+
+# Increase bash history
+export HISTFILESIZE=
+export HISTSIZE=1000000
+export HISTFILE='/home/david/.bash_history_eternal'
+# export FZF_DEFAULT_OPTS='--history-size=100000'
+# save history on every command
+shopt -s histappend
+PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
 
 bind -r '\C-s'
 stty -ixon -ixoff
 PS1='${debian_chroot:+($debian_chroot)}\
-\[\033[01;31m\]👨 \[\033[1m\]\u\[\033[00m\] \
+\[\033[01;31m\]😃 \[\033[1m\]\u\[\033[00m\] \
 \[\033[01;32m\]💻 \[\033[1m\]\h\[\033[00m\] \
 \[\033[01;34m\]📁 \[\033[1;4m\]\w\[\033[00m\] \
 \n➤ '
@@ -29,7 +39,6 @@ alias pytorch='nvidia-docker run -it --rm --net="host" -v $(pwd):/workspace --en
 alias jupyter-lab='nvidia-docker run -it --rm --net="host" -v $(pwd):/workspace --entrypoint "jupyter-lab" pytorch/pytorch:latest --allow-root --ip 0.0.0.0'
 alias tree='tree -I "node_modules|.env|__pycache__"'
 alias ..='cd ..'
-alias .='ll'
 
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -49,13 +58,27 @@ export LESS_TERMCAP_so=$(printf '\e[01;33m') # enter standout mode - yellow
 export LESS_TERMCAP_ue=$(printf '\e[0m') # leave underline mode
 export LESS_TERMCAP_us=$(printf '\e[04;36m') # enter underline mode - cyan
 
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+export PATH="$PYENV_ROOT/shims:$PATH"
+eval "$(pyenv init -)"
+
+#go
+export PATH="/home/david/go/bin:$PATH"
+
 # fuzzy file search
 source /usr/share/doc/fzf/examples/key-bindings.bash
 source /usr/share/bash-completion/completions/fzf
+# source /usr/share/doc/fzf/examples/completion.bash
+# export DOCKER_HOST="unix:///mnt/wsl/shared-docker/docker.sock"
 
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+# make ctrl-w (word delete) in bash nicer
+stty werase undef
+bind '\C-w:unix-filename-rubout'
+
+# load direnv
+eval "$(direnv hook bash)"
 
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/david/.mujoco/mujoco210/bin
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/nvidia

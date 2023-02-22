@@ -11,6 +11,18 @@ if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 
+" WSL yank support
+let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path according to your mount point
+if executable(s:clip)
+    augroup WSLYank
+        autocmd!
+        autocmd TextYankPost * if v:event.operator ==# 'y' | call system(s:clip, @0) | endif
+    augroup END
+endif
+
+" color
+set background=light
+
 " make backspace work
 set bs=2 
 
@@ -34,6 +46,9 @@ map <right> <nop>
 " down is next wrap line not just line
 nnoremap j gj
 nnoremap k gk
+
+" cut until end of line
+nnoremap S vg_"_d
 
 " quicksave/quickquit
 noremap <C-S> :w<CR>
@@ -129,7 +144,8 @@ Plug 'airblade/vim-gitgutter'
 
 "CTRLP
 Plug 'kien/ctrlp.vim'
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|data/\|__pycache__'
+let g:ctrlp_custom_ignore = 'node_modules/\|DS_Store/\|\.venv/\|__pycache__/\|\.git/\|\.env/\|\.mypy_cache/\|htmlcov/\|\.pytest_cache/'
+let g:ctrlp_show_hidden = 1
 
 "Multiple Cursors
 Plug 'terryma/vim-multiple-cursors'
@@ -139,6 +155,15 @@ Plug 'kshenoy/vim-signature'
 
 " ide
 " Plug 'scrooloose/nerdtree'
+
+" Terraform
+Plug 'hashivim/vim-terraform'
+
+" Dockerfile
+Plug 'ekalinin/Dockerfile.vim'
+
+" Ansible
+Plug 'pearofducks/ansible-vim'
 
 " Search
 " Plug 'ddrscott/vim-side-search'
@@ -156,6 +181,13 @@ Plug 'sainnhe/sonokai'
 Plug 'norcalli/nvim-colorizer.lua'
 
 
+" Python
+Plug 'vim-python/python-syntax'
+let g:python_highlight_all = 1
+
+" Jinja
+Plug 'glench/vim-jinja2-syntax'
+
 " Latex
 Plug 'lervag/vimtex', {'tag': 'v1.0'}
 let g:vimtex_compiler_latexmk = {
@@ -168,8 +200,7 @@ let g:tex_flavor = 'latex'
 
 " Coc
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-let g:coc_global_extensions = ['coc-vimtex', 'coc-pyright', 'coc-json', 'coc-vetur', 'coc-tsserver']
-
+let g:coc_global_extensions = ['coc-vimtex', 'coc-pyright', 'coc-json', 'coc-vetur', 'coc-tsserver', 'coc-prettier']
 
 
 " ############################
