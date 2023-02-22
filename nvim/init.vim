@@ -22,6 +22,7 @@ endif
 
 " color
 set background=light
+
 " make backspace work
 set bs=2 
 
@@ -32,6 +33,9 @@ set clipboard=unnamedplus
 
 " mouse
 set mouse=a
+
+" relative line numbers
+set relativenumber
 
 " unbind arrow keys :D
 map <up> <nop>
@@ -63,6 +67,7 @@ set tw=0
 highlight Visual cterm=none ctermbg=darkgrey ctermfg=cyan
 highlight LineNr ctermfg=grey
 highlight Search ctermfg=black
+highlight Visual ctermbg=darkgrey
 highlight CocErrorHighlight ctermfg=DarkRed
 highlight CocWarningHighlight ctermfg=DarkRed
 highlight CocInfoHighlight ctermfg=DarkRed
@@ -149,10 +154,6 @@ Plug 'terryma/vim-multiple-cursors'
 " signatures
 Plug 'kshenoy/vim-signature'
 
-" autopep8
-" Plug 'tell-k/vim-autopep8'
-" let g:autopep8_ignore='E501'
-
 " ide
 " Plug 'scrooloose/nerdtree'
 
@@ -176,7 +177,14 @@ Plug 'sainnhe/sonokai'
 Plug 'norcalli/nvim-colorizer.lua'
 
 " Vue
-" Plug 'posva/vim-vue'
+Plug 'posva/vim-vue'
+
+" Theme
+Plug 'sainnhe/sonokai'
+
+" Color in source code
+Plug 'norcalli/nvim-colorizer.lua'
+
 
 " Python
 Plug 'vim-python/python-syntax'
@@ -191,6 +199,7 @@ let g:vimtex_compiler_latexmk = {
         \ 'executable' : 'latexmk',
         \}
 let g:vimtex_complete_enabled = 1
+let g:vimtex_latexmk_continuous = 0
 let g:vimtex_view_method = 'zathura'
 let g:tex_flavor = 'latex'
 
@@ -404,7 +413,11 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 set termguicolors
+let g:sonokai_style = 'default'
+let g:sonokai_diagnostic_text_highlight = 0
+let g:sonokai_diagnostic_line_highlight = 1
+let g:sonokai_diagnostic_virtual_text = 'colored'
+let g:sonokai_disable_italic_comment = 1
 colorscheme sonokai
 
 lua require'colorizer'.setup()
-highlight Comment cterm=none gui=none

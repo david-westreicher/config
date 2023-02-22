@@ -25,15 +25,18 @@ alias python='python3'
 torrents () { python ~/Documents/config/scripts/torrent.py "$@";}
 alias multiscreen='python2 ~/Documents/config/scripts/multiscreen.py'
 alias forall='python3 ~/Documents/config/scripts/forall.py'
+alias cal='ncal -b -3'
 alias haskell='ghci'
 alias wetter='curl wttr.in/Innsbruck'
 alias search='ack -i'
+alias competitive='cookiecutter ~/Documents/config/cookiecutter/competitive/'
 alias music='cmus'
 alias vim='nvim'
 alias vps='ssh david@vps -i ~/.ssh/vps'
 alias largest='du -a $1 | sort -n -r | head -n 10'
 alias showimg='feh --draw-filename --scale-down --recursive --quiet --thumb-height 120 --thumb-width 120'
-alias pytorch='nvidia-docker run -it --rm --net="host" -v $(pwd):/workspace --entrypoint "python" pytorch:latest'
+alias pytorch='nvidia-docker run -it --rm --net="host" -v $(pwd):/workspace --entrypoint "python" pytorch/pytorch:latest'
+alias jupyter-lab='nvidia-docker run -it --rm --net="host" -v $(pwd):/workspace --entrypoint "jupyter-lab" pytorch/pytorch:latest --allow-root --ip 0.0.0.0'
 alias tree='tree -I "node_modules|.env|__pycache__"'
 alias ..='cd ..'
 
@@ -66,6 +69,7 @@ export PATH="/home/david/go/bin:$PATH"
 
 # fuzzy file search
 source /usr/share/doc/fzf/examples/key-bindings.bash
+source /usr/share/bash-completion/completions/fzf
 # source /usr/share/doc/fzf/examples/completion.bash
 # export DOCKER_HOST="unix:///mnt/wsl/shared-docker/docker.sock"
 
@@ -75,3 +79,6 @@ bind '\C-w:unix-filename-rubout'
 
 # load direnv
 eval "$(direnv hook bash)"
+
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/david/.mujoco/mujoco210/bin
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/nvidia
