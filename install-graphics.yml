@@ -27,18 +27,13 @@
         - papirus-icon-theme
         - udiskie
         - ibus # nicer input management (applet, emojis)
+        - alacritty
     become: yes
 
   - name: Install i3 dependencies
     pip:
       name: [Pillow] # Pillow is used in media_notification
       executable: pip3
-    become: yes
-
-  - name: Install alacritty
-    ansible.builtin.script: scripts/install_alacritty.sh
-    args:
-      creates: /usr/bin/alacritty
     become: yes
 
   - name: Create config folders
@@ -50,7 +45,6 @@
       - ~/.local/share/fonts
       - ~/.local/share/applications
       - ~/.config/alacritty
-      - ~/.config/lxterminal
       - ~/.config/dunst
       - ~/.config/picom
       - ~/.config/rofi
@@ -67,7 +61,6 @@
       - { path: 'xdg/mimeapps.list', dest: '.local/share/applications/mimeapps.list' }
       - { path: 'X/resources', dest: '.Xresources' }
       - { path: 'X/.xinitrc', dest: '.xinitrc' }
-      - { path: 'lxterminal/lxterminal.conf', dest: '.config/lxterminal/lxterminal.conf' }
       - { path: 'alacritty/alacritty.yml', dest: '.config/alacritty/alacritty.yml' }
       - { path: 'alacritty/alacritty_sonokai.yml', dest: '.config/alacritty/alacritty_sonokai.yml' }
       - { path: 'picom/picom.conf', dest: '.config/picom/picom.conf' }
