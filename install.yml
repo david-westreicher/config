@@ -73,7 +73,7 @@
       dest: ~/.config/nvim/autoload/plug.vim
 
   - name: Install nvim plugins
-    command: "nvim +PlugInstall +qall"
+    command: "nvim +PlugClean +PlugInstall +PlugUpdate +CocUpdate +qall"
 
       # - name: Build docker images
       #   docker_image:
