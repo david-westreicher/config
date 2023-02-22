@@ -29,7 +29,7 @@ set bs=2
 " make copy&paste work
 set pastetoggle=<F9>
 set clipboard=unnamedplus
-" vmap p "_dP
+vmap p "_dP
 
 " mouse
 set mouse=a
@@ -64,7 +64,6 @@ vnoremap > >gv
 " ide settings
 set number
 set tw=0
-highlight Visual cterm=none ctermbg=darkgrey ctermfg=cyan
 highlight LineNr ctermfg=grey
 highlight Search ctermfg=black
 highlight Visual ctermbg=darkgrey
@@ -170,11 +169,7 @@ Plug 'pearofducks/ansible-vim'
 " Plug 'ddrscott/vim-side-search'
 
 " Typescript
-" Plug 'leafgarland/typescript-vim'
-
-" Theme
-Plug 'sainnhe/sonokai'
-Plug 'norcalli/nvim-colorizer.lua'
+Plug 'leafgarland/typescript-vim'
 
 " Vue
 Plug 'posva/vim-vue'
