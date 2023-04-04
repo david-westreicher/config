@@ -67,6 +67,9 @@ eval "$(pyenv init -)"
 #go
 export PATH="/home/david/go/bin:$PATH"
 
+# pipx
+export PATH="/home/david/.local/bin:$PATH"
+
 # fuzzy file search
 source /usr/share/doc/fzf/examples/key-bindings.bash
 source /usr/share/bash-completion/completions/fzf
