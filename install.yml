@@ -20,6 +20,7 @@
         - ack
         - bash-completion
         - python3-pip
+        - pipx
         - nodejs
         - npm
         - cookiecutter
@@ -64,10 +65,9 @@
       insertafter: EOF
 
   - name: Install python
-    pip:
-      name: [black]
-      executable: pip3
-    become: yes
+    community.general.pipx:
+      name: black
+
   - name: Install pyenv
     command: curl https://pyenv.run | bash
     args:
