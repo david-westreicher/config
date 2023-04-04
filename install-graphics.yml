@@ -15,12 +15,15 @@
         - rofi
         - xinit
         - x11-xserver-utils
+        - pulseaudio
+        - pavucontrol
         - feh
         - fonts-font-awesome
         - w3m-img # used for ranger image preview
         - dunst
         - xdotool
         - zathura
+        - brightnessctl
         - flameshot
         - picom
         - playerctl
@@ -28,12 +31,8 @@
         - udiskie
         - ibus # nicer input management (applet, emojis)
         - alacritty
-    become: yes
-
-  - name: Install i3 dependencies
-    pip:
-      name: [Pillow] # Pillow is used in media_notification
-      executable: pip3
+        - libx11-dev # used in building fancy lock
+        - python3-pil # used in media notification
     become: yes
 
   - name: Create config folders

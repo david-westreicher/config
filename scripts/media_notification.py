@@ -135,5 +135,5 @@ except CalledProcessError:
 
 img = create_media_image(art, volume, muted, playing, pos)
 img.save(MEDIA_IMAGE_PATH)
-cmd = ["dunstify", title, body, "-i", MEDIA_IMAGE_PATH, "-r", "28731"]
+cmd = ["dunstify", title, body, "-i", MEDIA_IMAGE_PATH, "-r", "28731", "-a", "media-notification"]
 call(cmd)

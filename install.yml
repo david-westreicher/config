@@ -68,6 +68,10 @@
       name: [black]
       executable: pip3
     become: yes
+  - name: Install pyenv
+    command: curl https://pyenv.run | bash
+    args:
+      creates: ~/.pyenv/bin/pyenv
 
   - name: Install vim-plug for neovim
     get_url:
