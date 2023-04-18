@@ -56,6 +56,7 @@
       - { path: 'git/config', dest: '.gitconfig' }
       - { path: 'ranger/rc.conf', dest: '.config/ranger/rc.conf' }
       - { path: 'nvim/init.vim', dest: '.config/nvim/init.vim' }
+      - { path: 'nvim/coc.vim', dest: '.config/nvim/coc.vim' }
       - { path: 'nvim/coc-settings.json', dest: '.config/nvim/coc-settings.json' }
 
   - name: Add bashrc config
