@@ -26,6 +26,7 @@
         - cookiecutter
         - fzf
         - direnv
+        - bat # syntax highlighting in fzf vim
     become: yes
 
   - name: Create config folders
@@ -65,9 +66,18 @@
       line: '. ~/Documents/config/bash/bashrc'
       insertafter: EOF
 
-  - name: Install python
+  - name: Install global python dependencies
     community.general.pipx:
-      name: black
+      name: "{{ item }}"
+    with_items:
+      - black
+      - mypy
+
+  - name: Install global node dependencies
+    community.general.npm:
+      name: neovim
+      global: true
+    become: yes
 
   - name: Install pyenv
     command: curl https://pyenv.run | bash

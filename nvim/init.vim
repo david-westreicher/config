@@ -143,9 +143,9 @@ let g:airline_theme='sonokai'
 Plug 'airblade/vim-gitgutter'
 
 "CTRLP
-Plug 'kien/ctrlp.vim'
-let g:ctrlp_custom_ignore = 'node_modules/\|DS_Store/\|\.venv/\|__pycache__/\|\.git/\|\.env/\|\.mypy_cache/\|htmlcov/\|\.pytest_cache/'
-let g:ctrlp_show_hidden = 1
+"Plug 'kien/ctrlp.vim'
+"let g:ctrlp_custom_ignore = 'node_modules/\|DS_Store/\|\.venv/\|__pycache__/\|\.git/\|\.env/\|\.mypy_cache/\|htmlcov/\|\.pytest_cache/'
+"let g:ctrlp_show_hidden = 1
 
 "Multiple Cursors
 Plug 'terryma/vim-multiple-cursors'
@@ -188,6 +188,11 @@ let g:python_highlight_all = 1
 " Jinja
 Plug 'glench/vim-jinja2-syntax'
 
+" Fuzzy file search
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+nmap <silent> <C-P> :Files<CR>
+
 " Latex
 Plug 'lervag/vimtex', {'tag': 'v1.0'}
 let g:vimtex_compiler_latexmk = {
@@ -200,7 +205,7 @@ let g:tex_flavor = 'latex'
 
 " Coc
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-let g:coc_global_extensions = ['coc-vimtex', 'coc-pyright', 'coc-json', 'coc-vetur', 'coc-tsserver', 'coc-prettier']
+let g:coc_global_extensions = ['coc-vimtex', 'coc-pyright', 'coc-json', 'coc-vetur', 'coc-tsserver', 'coc-prettier', '@yaegassy/coc-ruff']
 
 
 " ############################

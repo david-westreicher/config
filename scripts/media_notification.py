@@ -28,7 +28,7 @@ MEDIA_CACHE_FOLDER = "/tmp/media_cache"
 MAX_TEXT_LENGTH = 35
 
 
-def find(key, meta, section="xesam", ignore_len=False):
+def find(key, meta: str, section="xesam", ignore_len=False):
     for line in meta.split("\n"):
         match = re.search(rf"{section}:{key}\ +(.*)$", line)
         if not match:
@@ -135,5 +135,15 @@ except CalledProcessError:
 
 img = create_media_image(art, volume, muted, playing, pos)
 img.save(MEDIA_IMAGE_PATH)
-cmd = ["dunstify", title, body, "-i", MEDIA_IMAGE_PATH, "-r", "28731", "-a", "media-notification"]
+cmd = [
+    "dunstify",
+    title,
+    body,
+    "-i",
+    MEDIA_IMAGE_PATH,
+    "-r",
+    "28731",
+    "-a",
+    "media-notification",
+]
 call(cmd)
