@@ -191,7 +191,15 @@ Plug 'glench/vim-jinja2-syntax'
 " Fuzzy file search
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-nmap <silent> <C-P> :Files<CR>
+function! GitFZF()
+  let path = trim(system('cd '.shellescape(expand('%:p:h')).' && git rev-parse --show-toplevel'))
+  if !isdirectory(path)
+    let path = expand('%:p:h')
+  endif
+  exe 'FZF ' . path
+endfunction
+command! GitFZF call GitFZF()
+nnoremap <silent> <C-p> :GitFZF<CR>
 
 " Latex
 Plug 'lervag/vimtex', {'tag': 'v1.0'}
