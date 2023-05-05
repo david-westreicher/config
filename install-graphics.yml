@@ -95,3 +95,9 @@
   - name: Build i3lock fancy rapid
     make:
         chdir: ./compile/i3lock
+
+  - name: Set update alternatives
+    community.general.alternatives:
+      name: x-terminal-emulator
+      path: /usr/bin/alacritty
+    become: yes
