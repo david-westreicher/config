@@ -27,6 +27,7 @@
         - fzf
         - direnv
         - bat # syntax highlighting in fzf vim
+        - khal # nicer calendar
     become: yes
 
   - name: Create config folders

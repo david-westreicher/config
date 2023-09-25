@@ -180,6 +180,9 @@ Plug 'sainnhe/sonokai'
 " Color in source code
 Plug 'norcalli/nvim-colorizer.lua'
 
+" Comment toggling
+Plug 'preservim/nerdcommenter'
+let g:NERDDefaultAlign = 'left'
 
 " Python
 Plug 'vim-python/python-syntax'
@@ -214,6 +217,7 @@ let g:tex_flavor = 'latex'
 " Coc
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = ['coc-vimtex', 'coc-pyright', 'coc-json', 'coc-vetur', 'coc-tsserver', 'coc-prettier', '@yaegassy/coc-ruff']
+autocmd BufWritePre *.py :silent call CocAction('runCommand', 'editor.action.organizeImport')
 
 
 " ############################
