@@ -202,6 +202,7 @@ function! GitFZF()
   exe 'FZF ' . path
 endfunction
 command! GitFZF call GitFZF()
+let g:fzf_preview_window = ['right,50%,<70(up,40%)']
 nnoremap <silent> <C-p> :GitFZF<CR>
 
 " Latex
