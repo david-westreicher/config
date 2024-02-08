@@ -33,6 +33,7 @@
         - alacritty
         - libx11-dev # used in building fancy lock
         - python3-pil # used in media notification
+        - redshift # screen lumen for night
     become: yes
 
   - name: Create config folders
