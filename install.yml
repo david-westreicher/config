@@ -15,6 +15,7 @@
         - avahi-daemon
         - neovim
         - git
+        - git-lfs
         - curl
         - ranger
         - ack
