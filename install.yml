@@ -13,18 +13,20 @@
       packages:
         - unzip
         - avahi-daemon
-        - neovim
         - git
+        - git-lfs
         - curl
         - ranger
         - ack
         - bash-completion
         - python3-pip
+        - pipx
         - nodejs
         - npm
         - cookiecutter
         - fzf
         - direnv
+        - khal # nicer calendar
     become: yes
 
   - name: Create config folders
@@ -35,7 +37,6 @@
     with_items:
       - ~/Documents
       - ~/.config/ranger
-      - ~/.config/nvim/autoload
 
   - name: Install diff-so-fancy for nice git diff messages
     community.general.npm:
@@ -54,8 +55,7 @@
       - { path: 'ls/dircolors.nord', dest: '.dircolors' }
       - { path: 'git/config', dest: '.gitconfig' }
       - { path: 'ranger/rc.conf', dest: '.config/ranger/rc.conf' }
-      - { path: 'nvim/init.vim', dest: '.config/nvim/init.vim' }
-      - { path: 'nvim/coc-settings.json', dest: '.config/nvim/coc-settings.json' }
+      - { path: 'nvim', dest: '.config/nvim' }
 
   - name: Add bashrc config
     lineinfile:
@@ -63,19 +63,33 @@
       line: '. ~/Documents/config/bash/bashrc'
       insertafter: EOF
 
-  - name: Install python
-    pip:
-      name: [black]
-      executable: pip3
+  - name: Install global python dependencies
+    community.general.pipx:
+      name: "{{ item }}"
+    with_items:
+      - black
+      - mypy
+
+  - name: Install nvim via snap
+    community.general.snap:
+      name: nvim
+      classic: true
     become: yes
 
-  - name: Install vim-plug for neovim
-    get_url:
-      url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-      dest: ~/.config/nvim/autoload/plug.vim
+  - name: Install global node dependencies
+    community.general.npm:
+      name: neovim
+      global: true
+    become: yes
 
-  - name: Install nvim plugins
-    command: "nvim +PlugClean +PlugInstall +PlugUpdate +CocUpdate +qall"
+  - name: Install pyenv
+    command: curl https://pyenv.run | bash
+    args:
+      creates: ~/.pyenv/bin/pyenv
+
+  - name: Update LazyVim
+    command: nvim +"lua require('lazy').restore({wait=true})" +qa
+
 
       # - name: Build docker images
       #   docker_image:
