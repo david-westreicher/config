@@ -13,7 +13,6 @@
       packages:
         - unzip
         - avahi-daemon
-        - neovim
         - git
         - git-lfs
         - curl
@@ -27,7 +26,6 @@
         - cookiecutter
         - fzf
         - direnv
-        - bat # syntax highlighting in fzf vim
         - khal # nicer calendar
     become: yes
 
@@ -39,7 +37,6 @@
     with_items:
       - ~/Documents
       - ~/.config/ranger
-      - ~/.config/nvim/autoload
 
   - name: Install diff-so-fancy for nice git diff messages
     community.general.npm:
@@ -58,9 +55,7 @@
       - { path: 'ls/dircolors.nord', dest: '.dircolors' }
       - { path: 'git/config', dest: '.gitconfig' }
       - { path: 'ranger/rc.conf', dest: '.config/ranger/rc.conf' }
-      - { path: 'nvim/init.vim', dest: '.config/nvim/init.vim' }
-      - { path: 'nvim/coc.vim', dest: '.config/nvim/coc.vim' }
-      - { path: 'nvim/coc-settings.json', dest: '.config/nvim/coc-settings.json' }
+      - { path: 'nvim', dest: '.config/nvim' }
 
   - name: Add bashrc config
     lineinfile:
@@ -75,6 +70,12 @@
       - black
       - mypy
 
+  - name: Install nvim via snap
+    community.general.snap:
+      name: nvim
+      classic: true
+    become: yes
+
   - name: Install global node dependencies
     community.general.npm:
       name: neovim
@@ -86,13 +87,9 @@
     args:
       creates: ~/.pyenv/bin/pyenv
 
-  - name: Install vim-plug for neovim
-    get_url:
-      url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-      dest: ~/.config/nvim/autoload/plug.vim
+  - name: Update LazyVim
+    command: nvim +"lua require('lazy').restore({wait=true})" +qa
 
-  - name: Install nvim plugins
-    command: "nvim +PlugClean +PlugInstall +PlugUpdate +CocUpdate +qall"
 
       # - name: Build docker images
       #   docker_image:
