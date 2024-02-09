@@ -15,10 +15,11 @@
         - rofi
         - xinit
         - x11-xserver-utils
+        - xclip
+        - fonts-noto-color-emoji
         - pulseaudio
         - pavucontrol
         - feh
-        - fonts-font-awesome
         - w3m-img # used for ranger image preview
         - dunst
         - xdotool
@@ -42,13 +43,13 @@
       state: directory
       recurse: yes
     with_items:
-      - ~/.local/share/fonts
       - ~/.local/share/applications
       - ~/.config/alacritty
       - ~/.config/dunst
       - ~/.config/picom
       - ~/.config/rofi
       - ~/.config/zathura
+      - ~/.config/fontconfig
       - ~/.i3
 
   - name: Create soft links
@@ -73,20 +74,18 @@
       - { path: 'zathura/zathurarc', dest: '.config/zathura/zathurarc' }
       - { path: 'font/fonts.conf', dest: '.config/fontconfig/fonts.conf' }
 
-  - name: Install twitter emoji
-    unarchive:
-        src: "https://github.com/eosrei/twemoji-color-font/releases/download/v13.0.1/TwitterColorEmoji-SVGinOT-Linux-13.0.1.tar.gz"
-        dest: "~/.local/share/fonts/"
-        remote_src: yes
-
-  - name: Install noto emoji
-    unarchive:
-        src: "https://noto-website-2.storage.googleapis.com/pkgs/NotoColorEmoji-unhinted.zip"
-        dest: "~/.local/share/fonts/"
-        remote_src: yes
-
-  - name: Install fonts
-    command: "fc-cache -f -v"
+  - name: Install nerd font
+    shell: |
+      mkdir -p /tmp/nerdfont/patched-fonts/UbuntuMono
+      cd /tmp/nerdfont
+      curl -OL https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/install.sh
+      curl -OL https://github.com/ryanoasis/nerd-fonts/releases/latest/download/UbuntuMono.tar.xz
+      tar -xf UbuntuMono.tar.xz -C patched-fonts/UbuntuMono
+      chmod +x install.sh
+      ./install.sh UbuntuMono
+      rm -rf /tmp/nerdfont
+    args:
+      creates: ~/.local/share/fonts/NerdFonts
 
   - name: Get i3lock fancy rapid
     git:
