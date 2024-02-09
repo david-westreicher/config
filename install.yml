@@ -26,6 +26,7 @@
         - cookiecutter
         - fzf
         - direnv
+        - snapd # for neovim 0.9.2
         - khal # nicer calendar
     become: yes
 
@@ -70,6 +71,11 @@
       - black
       - mypy
 
+  - name: Update snap to latest
+    community.general.snap:
+      name: core
+    become: yes
+
   - name: Install nvim via snap
     community.general.snap:
       name: nvim
@@ -88,7 +94,7 @@
       creates: ~/.pyenv/bin/pyenv
 
   - name: Update LazyVim
-    command: nvim +"lua require('lazy').restore({wait=true})" +qa
+    command: /snap/bin/nvim +"lua require('lazy').restore({wait=true})" +qa
 
 
       # - name: Build docker images
