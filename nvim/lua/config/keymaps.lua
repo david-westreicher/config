@@ -7,5 +7,7 @@ vim.keymap.set("n", "<C-w>", vim.cmd.bdelete)
 
 vim.keymap.del("n", "<S-h>")
 vim.keymap.del("n", "<S-l>")
-vim.keymap.set("n", "<C-h>", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
-vim.keymap.set("n", "<C-l>", "<cmd>bnext<cr>", { desc = "Next buffer" })
+vim.keymap.set("n", "<S-j>", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
+-- vim.keymap.set("n", "<S-k>", "<cmd>bnext<cr>", { desc = "Next buffer" })
+--
+vim.keymap.set("n", "<S-Tab>", "<cmd>e #<cr>", { desc = "Switch to other buffer" })
