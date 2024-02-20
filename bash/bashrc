@@ -89,3 +89,8 @@ export ANDROID_HOME=$HOME/android/sdk
 export PATH=$ANDROID_HOME/cmdline-tools/tools/bin/:$PATH
 export PATH=$ANDROID_HOME/emulator/:$PATH
 export PATH=$ANDROID_HOME/platform-tools/:$PATH
+
+# better cd
+eval "$(zoxide init bash)"
+alias cd="z"
+alias cdi="zi"

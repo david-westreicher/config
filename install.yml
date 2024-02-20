@@ -28,6 +28,7 @@
         - direnv
         - snapd # for neovim 0.9.2
         - khal # nicer calendar
+        - zoxide # better cd
     become: yes
 
   - name: Create config folders
