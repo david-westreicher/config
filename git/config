@@ -1,3 +1,5 @@
+[init]
+    defaultBranch = main
 [user]
 	email = david.westreicher@gmail.com
 	name = David Westreicher

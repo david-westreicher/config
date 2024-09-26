@@ -3,12 +3,11 @@ import hashlib
 import os
 import pathlib
 import re
-from subprocess import CalledProcessError, call, check_output
 import urllib
 import urllib.request
+from subprocess import CalledProcessError, call, check_output
 
-from PIL import Image, ImageDraw
-
+from PIL import Image, ImageDraw, ImageOps
 
 DEFAULT_ART_PATH = pathlib.Path(__file__).parent.resolve() / "starred.png"
 PLAY_BUTTON_PATH = (
@@ -55,8 +54,6 @@ def open_cached_image(path):
         except Exception:
             return DEFAULT_ART_PATH
         img = Image.open(file_path)
-        img = img.resize((256, 256), Image.NEAREST)
-        print(img.size)
         img.save(file_path, format="png")
     return file_path
 
@@ -65,7 +62,7 @@ def create_media_image(art, volume, muted, playing, pos):
     # draw artwork
     img = Image.new(mode="RGBA", size=(60 + 256, 256))
     art_img = Image.open(open_cached_image(art))
-    art_img = art_img.resize((256, 256), Image.NEAREST)
+    art_img = ImageOps.fit(art_img, (256, 256))
     img.paste(art_img, ((60, 0, 60 + 256, 256)))
 
     # draw play/pause
